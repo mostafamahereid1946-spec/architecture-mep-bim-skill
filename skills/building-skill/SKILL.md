@@ -62,6 +62,9 @@ uv run scripts/acad_verify.py plan.dxf --layout A1-GF    # real AutoCAD: AUDIT, 
 uvx --with matplotlib ezdxf draw -o preview.png plan.dxf # quick preview without AutoCAD
 ```
 
+BIM from the same spec (Revit incl. LT, ArchiCAD, Bonsai import it; walls typed, openings are real voids, validated):
+`uv run --with ifcopenshell scripts/ifc_from_spec.py plan.json`
+
 3D + render from the same spec (3ds Max, site sun from `BS_LAT/BS_LON/BS_TZ`): set `BS_SPEC` and `BS_OUT`, then run `3dsmaxbatch.exe scripts\max_massing.py` (details in the script header). Use ART, not Arnold, in batch: Arnold watermarks when its licence doesn't start.
 
 ## 5. Set the drawing up the country's way
