@@ -54,6 +54,18 @@ Same plan, three countries:
 
 All produced by the skill's scripts and verified in AutoCAD 2026 (AUDIT: 0 errors) and 3ds Max 2026. Built together with Claude (Anthropic) — the skill was written, tested and debugged by Claude Code running it against the real apps.
 
+## Mall in every country
+
+One generator, 28 country profiles: a two-level shopping mall per country with cited setbacks, travel distances and sprinkler grids, plus DXF/DWG/PDF, MEP overlay, IFC and a design audit. Every country has its own offline dashboard. Open [`examples/malls/index.html`](examples/malls/index.html) (or read the [method and per-country results](examples/malls/README.md)). Renders from 3ds Max:
+
+| Qatar | Egypt |
+|---|---|
+| [![Qatar mall](examples/malls/qa/render.jpg)](examples/malls/qa/dashboard.html) | [![Egypt mall](examples/malls/eg/render.jpg)](examples/malls/eg/dashboard.html) |
+| **USA** | **Germany** |
+| [![USA mall](examples/malls/us/render.jpg)](examples/malls/us/dashboard.html) | [![Germany mall](examples/malls/de/render.jpg)](examples/malls/de/dashboard.html) |
+
+Any project folder gets the same page: `uv run -q skills/architecture-mep-bim/scripts/dashboard.py <project-folder>` writes one static `dashboard.html` (pipeline status, code check, audit, gallery, downloads, bilingual) that works from a double-click.
+
 ## Install
 
 **Claude Code**

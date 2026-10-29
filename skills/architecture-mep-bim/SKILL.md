@@ -63,6 +63,7 @@ uv run scripts/acad_verify.py plan.dxf --layout A1-GF    # real AutoCAD: AUDIT, 
 uvx --with matplotlib ezdxf draw -o preview.png plan.dxf # quick preview without AutoCAD
 uv run -q scripts/gen_mall.py --country qa --out examples/malls/qa  # parametric 2-level mall: GF.json + L1.json (+ mall.json, rules cited)
 uv run -q scripts/mep_overlay.py GF.json                 # after dxf_plan: sprinklers, detectors, diffusers, ducts, DBs, lighting, WC -> GF-MEP.dxf
+uv run -q scripts/dashboard.py <project-folder>          # one offline dashboard.html: pipeline, code check, audit, gallery, downloads (client hand-off)
 ```
 
 BIM from the same spec (Revit incl. LT, ArchiCAD, Bonsai import it; walls typed, openings are real voids, validated):
