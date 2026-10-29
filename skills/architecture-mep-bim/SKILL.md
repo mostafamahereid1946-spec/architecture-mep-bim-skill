@@ -68,6 +68,10 @@ BIM from the same spec (Revit incl. LT, ArchiCAD, Bonsai import it; walls typed,
 
 3D + render from the same spec (3ds Max, site sun from `BS_LAT/BS_LON/BS_TZ`): set `BS_SPEC` and `BS_OUT`, then run `3dsmaxbatch.exe scripts\max_massing.py` (details in the script header). Use ART, not Arnold, in batch: Arnold watermarks when its licence doesn't start.
 
+## Full projects: run the agent team
+
+When installed as a Claude Code plugin, the repo's `agents/` gives one specialist per stage. For anything bigger than a single sheet, dispatch them in order and feed each one the previous output: `aec-brief-planner` → `aec-code-checker` (loop back to the planner until 0 FAIL) → `aec-drafter` → `aec-mep-engineer` → `aec-bim-modeler` → `aec-visualizer` → `aec-qa-reviewer`. Without the plugin, run the same stages yourself in that order.
+
 ## 5. Set the drawing up the country's way
 
 `scripts/profiles/<iso2>.json` holds units, dimension format, layers, sheet and bilingual title block (qa eg sa ae us uk; `"extends"` makes a new one from the nearest). Without a profile, build one from sections 1–3 of the country file. A correct setup has all of:
