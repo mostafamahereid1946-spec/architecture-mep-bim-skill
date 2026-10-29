@@ -82,6 +82,7 @@ AutoCAD shapes Arabic letters but lays words out left-to-right, so phrases read 
 
 ## 7. Verify before saying done
 
+0. `uv run --with shapely --with networkx scripts/plan_audit.py plan.json` (rooms, circulation, door placement, light, privacy, minimum sizes): fix every FAIL in the design before drawing/exporting; review WARNs.
 1. `acad_verify.py` (or the app itself): `AUDIT_ERRORS=0` (otherwise read `<name>-acad.log`), `ON_LAYER_0=0`, DWG and PDF written. Paper names for each sheet size are in its `--help`.
 2. Render the PDF to PNG and look: tag/dimension collisions, door swings into the room they serve, Arabic order, scale.
 3. Checklist: setbacks dimensioned to every boundary · area schedule (plot, footprint, coverage %, FAR) · room names + areas · door/window tags · levels · scale + north · title block complete · revision.
