@@ -58,13 +58,13 @@ All produced by the skill's scripts and verified in AutoCAD 2026 (AUDIT: 0 error
 
 **Claude Code**
 ```
-/plugin marketplace add OWNER/building-skill
+/plugin marketplace add mostafamahereid1946-spec/claude-building-skill
 /plugin install building-skill@building-skill
 ```
 
 **Any agent (Claude Code, Codex, Cursor, …)**
 ```
-npx skills add OWNER/building-skill
+npx skills add mostafamahereid1946-spec/claude-building-skill
 ```
 
 **claude.ai** — download `building-skill.zip` from Releases → Settings → Capabilities → Skills → upload. Code execution must be on.
