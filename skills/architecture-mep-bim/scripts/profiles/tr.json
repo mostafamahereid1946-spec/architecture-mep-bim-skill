@@ -1,0 +1,126 @@
+{
+  "extends": "qa",
+  "_note": "Turkey: metric, plan dims in cm, levels in m (kot), Turkish only, Turkish layer names (DUVAR, KAPI, PENCERE, AKS, OLCU...) per office practice, no mandatory national standard. See references/countries/tr.md",
+  "country": "Turkey",
+  "bilingual": false,
+  "scale_label": "1/100",
+  "text": {
+    "style": "TR-ARIAL"
+  },
+  "dim": {
+    "name": "TR-100-CM",
+    "lfac": 0.1,
+    "decimals": 0
+  },
+  "titleblock_fields": [
+    [
+      "PROJE ADI",
+      "",
+      "title"
+    ],
+    [
+      "YAPI SAHİBİ",
+      "",
+      "client"
+    ],
+    [
+      "ADA / PARSEL",
+      "",
+      "plot"
+    ],
+    [
+      "PAFTA ADI",
+      "",
+      "drawing"
+    ],
+    [
+      "PAFTA NO",
+      "",
+      "number"
+    ],
+    [
+      "ÖLÇEK",
+      "",
+      "scale"
+    ],
+    [
+      "TARİH",
+      "",
+      "date"
+    ],
+    [
+      "MİMAR (ODA SİCİL NO)",
+      "",
+      "drawn"
+    ],
+    [
+      "REVİZYON",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "DUVAR",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "HATCH",
+      8,
+      9
+    ],
+    "door": [
+      "KAPI",
+      3,
+      25
+    ],
+    "window": [
+      "PENCERE",
+      5,
+      25
+    ],
+    "tag": [
+      "ETIKET",
+      2,
+      18
+    ],
+    "room": [
+      "MAHAL",
+      2,
+      18
+    ],
+    "grid": [
+      "AKS",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "OLCU",
+      1,
+      18
+    ],
+    "titleblock": [
+      "KARTUS",
+      7,
+      35
+    ],
+    "viewport": [
+      "VIEWPORT",
+      6,
+      9
+    ],
+    "plot": [
+      "PARSEL",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "YAZI",
+      7,
+      18
+    ]
+  }
+}

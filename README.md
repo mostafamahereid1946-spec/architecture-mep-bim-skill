@@ -1,4 +1,4 @@
-# building-skill — AutoCAD · Revit · BIM · MEP skill for Claude
+# ArchMind — Architecture, MEP & BIM skill for Claude (AutoCAD · Revit · SketchUp · 3ds Max)
 
 **Free, open-source Claude skill that draws buildings the way each country actually requires.**
 Architecture, structure, MEP (HVAC, plumbing, drainage, electrical, fire), civil/site and renders, in
@@ -11,7 +11,7 @@ AutoCAD (incl. MEP / Electrical / Mechanical), Revit, SketchUp, 3ds Max, IFC/ope
 Ask any AI for "a villa plan in Doha" and you get US layer names, guessed setbacks and an invented law number.
 This skill fixes that. Tested head-to-head (same task, with and without the skill):
 
-| | Without skill | With building-skill |
+| | Without skill | With ArchMind |
 |---|---|---|
 | Layers / units | US standard for every country | Each country's own (mm, cm, m, ft-in) |
 | Setbacks | Guessed | Cited from official text (e.g. Qatar Ministerial Decision 108/2026), or "get it from <authority>" |
@@ -58,16 +58,16 @@ All produced by the skill's scripts and verified in AutoCAD 2026 (AUDIT: 0 error
 
 **Claude Code**
 ```
-/plugin marketplace add mostafamahereid1946-spec/claude-building-skill
-/plugin install building-skill@building-skill
+/plugin marketplace add mostafamahereid1946-spec/architecture-mep-bim-skill
+/plugin install architecture-mep-bim@architecture-mep-bim
 ```
 
 **Any agent (Claude Code, Codex, Cursor, …)**
 ```
-npx skills add mostafamahereid1946-spec/claude-building-skill
+npx skills add mostafamahereid1946-spec/architecture-mep-bim-skill
 ```
 
-**claude.ai** — download `building-skill.zip` from Releases → Settings → Capabilities → Skills → upload. Code execution must be on.
+**claude.ai** — download `architecture-mep-bim.zip` from Releases → Settings → Capabilities → Skills → upload. Code execution must be on.
 
 Scripts need [uv](https://docs.astral.sh/uv/) (it fetches Python and ezdxf automatically). AutoCAD/3ds Max are optional.
 
@@ -85,7 +85,7 @@ Scripts need [uv](https://docs.astral.sh/uv/) (it fetches Python and ezdxf autom
 
 ## Contributing
 
-Add a country: copy `skills/building-skill/references/countries/qa.md`'s section layout, cite every number, mark unverified ones ⚠, and add a profile in `scripts/profiles/` (use `"extends"`). PRs with official-source corrections are the most valuable contribution.
+Add a country: copy `skills/architecture-mep-bim/references/countries/qa.md`'s section layout, cite every number, mark unverified ones ⚠, and add a profile in `scripts/profiles/` (use `"extends"`). PRs with official-source corrections are the most valuable contribution.
 
 ## License
 

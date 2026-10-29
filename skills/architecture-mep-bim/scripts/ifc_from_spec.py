@@ -43,7 +43,7 @@ def placement(f, prod, x, y, rot=0.0, z=0.0):
 def build(spec, height):
     f = A.project.create_file(version="IFC4")
     proj = spec.get("project", {})
-    project = A.root.create_entity(f, ifc_class="IfcProject", name=proj.get("title", "building-skill project"))
+    project = A.root.create_entity(f, ifc_class="IfcProject", name=proj.get("title", "ArchMind project"))
     A.unit.assign_unit(f)
     model = A.context.add_context(f, context_type="Model")
     body = A.context.add_context(f, context_type="Model", context_identifier="Body",

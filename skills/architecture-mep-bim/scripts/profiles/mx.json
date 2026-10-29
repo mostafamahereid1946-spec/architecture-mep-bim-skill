@@ -1,0 +1,127 @@
+{
+  "extends": "qa",
+  "_note": "Mexico: metric, dims in m (2 dp), levels N.P.T., Spanish labels, Spanish plain layer names (MUROS, PUERTAS, VENTANAS, EJES, COTAS...) per office practice, no mandatory standard. See references/countries/mx.md",
+  "country": "Mexico",
+  "bilingual": false,
+  "scale_label": "Esc. 1:100",
+  "text": {
+    "style": "MX-ARIAL"
+  },
+  "dim": {
+    "name": "MX-100-M",
+    "lfac": 0.001,
+    "decimals": 2,
+    "zin": 0
+  },
+  "titleblock_fields": [
+    [
+      "PROYECTO",
+      "",
+      "title"
+    ],
+    [
+      "PROPIETARIO",
+      "",
+      "client"
+    ],
+    [
+      "CUENTA CATASTRAL / UBICACIÓN",
+      "",
+      "plot"
+    ],
+    [
+      "PLANO",
+      "",
+      "drawing"
+    ],
+    [
+      "CLAVE DE HOJA",
+      "",
+      "number"
+    ],
+    [
+      "ESCALA",
+      "",
+      "scale"
+    ],
+    [
+      "FECHA",
+      "",
+      "date"
+    ],
+    [
+      "DRO (REGISTRO No.)",
+      "",
+      "drawn"
+    ],
+    [
+      "REVISIÓN",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "MUROS",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "ACHURADO",
+      8,
+      9
+    ],
+    "door": [
+      "PUERTAS",
+      3,
+      25
+    ],
+    "window": [
+      "VENTANAS",
+      5,
+      25
+    ],
+    "tag": [
+      "ETIQUETAS",
+      2,
+      18
+    ],
+    "room": [
+      "LOCALES",
+      2,
+      18
+    ],
+    "grid": [
+      "EJES",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "COTAS",
+      1,
+      18
+    ],
+    "titleblock": [
+      "CAJETIN",
+      7,
+      35
+    ],
+    "viewport": [
+      "VIEWPORT",
+      6,
+      9
+    ],
+    "plot": [
+      "LIMITE-PREDIO",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "NOTAS",
+      7,
+      18
+    ]
+  }
+}

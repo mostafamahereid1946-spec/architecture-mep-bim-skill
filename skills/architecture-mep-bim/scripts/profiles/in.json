@@ -1,0 +1,124 @@
+{
+  "extends": "qa",
+  "_note": "India: metric (state 'all dimensions in mm'), English, IS 962 drafting, AIA-style layers kept with AutoDCR-style PLOT-BOUNDARY and A-AREA closed polylines (confirm layer list with the ULB). See references/countries/in.md",
+  "country": "India",
+  "bilingual": false,
+  "scale_label": "1:100 @ A1",
+  "text": {
+    "style": "IN-ARIAL"
+  },
+  "dim": {
+    "name": "IN-100"
+  },
+  "titleblock_fields": [
+    [
+      "PROJECT",
+      "",
+      "title"
+    ],
+    [
+      "CLIENT",
+      "",
+      "client"
+    ],
+    [
+      "PLOT / SURVEY / KHASRA No.",
+      "",
+      "plot"
+    ],
+    [
+      "DRAWING TITLE",
+      "",
+      "drawing"
+    ],
+    [
+      "DRAWING No.",
+      "",
+      "number"
+    ],
+    [
+      "SCALE",
+      "",
+      "scale"
+    ],
+    [
+      "DATE",
+      "",
+      "date"
+    ],
+    [
+      "ARCHITECT (COA No.) / LTP",
+      "",
+      "drawn"
+    ],
+    [
+      "REV",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "A-WALL",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "A-WALL-PATT",
+      8,
+      9
+    ],
+    "door": [
+      "A-DOOR",
+      3,
+      25
+    ],
+    "window": [
+      "A-GLAZ",
+      5,
+      25
+    ],
+    "tag": [
+      "A-ANNO-SYMB",
+      2,
+      18
+    ],
+    "room": [
+      "A-AREA",
+      2,
+      18
+    ],
+    "grid": [
+      "A-GRID",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "A-ANNO-DIMS",
+      1,
+      18
+    ],
+    "titleblock": [
+      "A-ANNO-TTLB",
+      7,
+      35
+    ],
+    "viewport": [
+      "A-ANNO-NPLT",
+      6,
+      9
+    ],
+    "plot": [
+      "PLOT-BOUNDARY",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "A-ANNO-NOTE",
+      7,
+      18
+    ]
+  }
+}

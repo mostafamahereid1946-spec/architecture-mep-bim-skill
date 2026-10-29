@@ -1,0 +1,128 @@
+{
+  "extends": "qa",
+  "_note": "Germany: metric, dims in m (2 dp; comma decimal not emulated), levels +-0,00 OKFF, German labels, layers follow the DIN EN ISO 13567-style default set in the reference (A-WAND-TRAG, A-TUER, A-FENSTER, A-ACHSEN, A-MASS...). See references/countries/de.md",
+  "country": "Germany",
+  "bilingual": false,
+  "scale_label": "M 1:100",
+  "text": {
+    "style": "DE-ARIAL"
+  },
+  "dim": {
+    "name": "DE-100-M",
+    "lfac": 0.001,
+    "decimals": 2,
+    "zin": 0,
+    "dsep": ","
+  },
+  "titleblock_fields": [
+    [
+      "BAUVORHABEN",
+      "",
+      "title"
+    ],
+    [
+      "BAUHERR",
+      "",
+      "client"
+    ],
+    [
+      "FLURSTÜCK / GEMARKUNG",
+      "",
+      "plot"
+    ],
+    [
+      "PLANINHALT",
+      "",
+      "drawing"
+    ],
+    [
+      "PLAN-NR.",
+      "",
+      "number"
+    ],
+    [
+      "MAßSTAB",
+      "",
+      "scale"
+    ],
+    [
+      "DATUM",
+      "",
+      "date"
+    ],
+    [
+      "ENTWURFSVERFASSER",
+      "",
+      "drawn"
+    ],
+    [
+      "INDEX",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "A-WAND-TRAG",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "A-SCHRAFFUR",
+      8,
+      9
+    ],
+    "door": [
+      "A-TUER",
+      3,
+      25
+    ],
+    "window": [
+      "A-FENSTER",
+      5,
+      25
+    ],
+    "tag": [
+      "A-OEFFNUNG-NR",
+      2,
+      18
+    ],
+    "room": [
+      "A-RAUM-STEMPEL",
+      2,
+      18
+    ],
+    "grid": [
+      "A-ACHSEN",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "A-MASS",
+      1,
+      18
+    ],
+    "titleblock": [
+      "A-SCHRIFTFELD",
+      7,
+      35
+    ],
+    "viewport": [
+      "A-VIEWPORT-NPLT",
+      6,
+      9
+    ],
+    "plot": [
+      "A-LAGEPLAN-GRENZE",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "A-TEXT",
+      7,
+      18
+    ]
+  }
+}

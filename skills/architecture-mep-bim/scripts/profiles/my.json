@@ -1,0 +1,60 @@
+{
+  "extends": "qa",
+  "_note": "Malaysia: metric (UBBL), plans in mm, English with BM terms, AIA-style layers kept (no mandated scheme). See references/countries/my.md",
+  "country": "Malaysia",
+  "bilingual": false,
+  "scale_label": "1:100 @ A1",
+  "text": {
+    "style": "MY-ARIAL"
+  },
+  "dim": {
+    "name": "MY-100"
+  },
+  "titleblock_fields": [
+    [
+      "PROJECT",
+      "",
+      "title"
+    ],
+    [
+      "CLIENT / PEMILIK",
+      "",
+      "client"
+    ],
+    [
+      "LOT No. / MUKIM / DAERAH",
+      "",
+      "plot"
+    ],
+    [
+      "DRAWING TITLE",
+      "",
+      "drawing"
+    ],
+    [
+      "DRAWING No.",
+      "",
+      "number"
+    ],
+    [
+      "SCALE",
+      "",
+      "scale"
+    ],
+    [
+      "DATE",
+      "",
+      "date"
+    ],
+    [
+      "PSP (REG. No.) / PERANCANG",
+      "",
+      "drawn"
+    ],
+    [
+      "REV",
+      "",
+      "rev"
+    ]
+  ]
+}

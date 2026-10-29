@@ -1,9 +1,9 @@
 {
-  "name": "building-skill",
-  "owner": {"name": "building-skill contributors"},
+  "name": "architecture-mep-bim",
+  "owner": {"name": "mostafamahereid1946-spec"},
   "plugins": [
     {
-      "name": "building-skill",
+      "name": "architecture-mep-bim",
       "source": "./",
       "description": "Country-correct architecture, BIM and MEP drawings with AutoCAD, Revit, SketchUp, 3ds Max and IFC."
     }

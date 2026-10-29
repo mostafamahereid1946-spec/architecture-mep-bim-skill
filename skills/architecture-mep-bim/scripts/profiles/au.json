@@ -1,0 +1,60 @@
+{
+  "extends": "qa",
+  "_note": "Australia: metric, plans in mm, levels RL (m AHD), English, AS 1100.101/301 drafting; no statutory layer standard so AIA-style layers kept. See references/countries/au.md",
+  "country": "Australia",
+  "bilingual": false,
+  "scale_label": "1:100 @ A1",
+  "text": {
+    "style": "AU-ARIAL"
+  },
+  "dim": {
+    "name": "AU-100"
+  },
+  "titleblock_fields": [
+    [
+      "PROJECT",
+      "",
+      "title"
+    ],
+    [
+      "CLIENT",
+      "",
+      "client"
+    ],
+    [
+      "LOT / DP",
+      "",
+      "plot"
+    ],
+    [
+      "DRAWING TITLE",
+      "",
+      "drawing"
+    ],
+    [
+      "DRAWING No.",
+      "",
+      "number"
+    ],
+    [
+      "SCALE",
+      "",
+      "scale"
+    ],
+    [
+      "DATE",
+      "",
+      "date"
+    ],
+    [
+      "AUTHOR (REGISTRATION No.)",
+      "",
+      "drawn"
+    ],
+    [
+      "REV",
+      "",
+      "rev"
+    ]
+  ]
+}

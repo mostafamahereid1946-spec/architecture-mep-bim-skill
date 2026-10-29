@@ -1,0 +1,125 @@
+{
+  "extends": "qa",
+  "_note": "China: metric, dims in mm without unit, Simplified Chinese labels (SimSun) per GB/T 50001, Chinese layer names in GB/T 18112 / office style (0-墙体, 0-门, 0-窗, 0-轴线, 0-标注...). See references/countries/cn.md",
+  "country": "China",
+  "bilingual": false,
+  "scale_label": "1:100",
+  "text": {
+    "style": "CN-ARIAL",
+    "font": "simsun.ttc"
+  },
+  "dim": {
+    "name": "CN-100"
+  },
+  "titleblock_fields": [
+    [
+      "项目名称",
+      "",
+      "title"
+    ],
+    [
+      "建设单位",
+      "",
+      "client"
+    ],
+    [
+      "地块编号",
+      "",
+      "plot"
+    ],
+    [
+      "图名",
+      "",
+      "drawing"
+    ],
+    [
+      "图号",
+      "",
+      "number"
+    ],
+    [
+      "比例",
+      "",
+      "scale"
+    ],
+    [
+      "日期",
+      "",
+      "date"
+    ],
+    [
+      "设计/校对/审核",
+      "",
+      "drawn"
+    ],
+    [
+      "版次",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "0-墙体",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "0-填充",
+      8,
+      9
+    ],
+    "door": [
+      "0-门",
+      3,
+      25
+    ],
+    "window": [
+      "0-窗",
+      5,
+      25
+    ],
+    "tag": [
+      "0-门窗编号",
+      2,
+      18
+    ],
+    "room": [
+      "0-房间",
+      2,
+      18
+    ],
+    "grid": [
+      "0-轴线",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "0-标注",
+      1,
+      18
+    ],
+    "titleblock": [
+      "0-图框",
+      7,
+      35
+    ],
+    "viewport": [
+      "0-视口",
+      6,
+      9
+    ],
+    "plot": [
+      "0-用地红线",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "0-文字",
+      7,
+      18
+    ]
+  }
+}

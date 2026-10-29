@@ -8,7 +8,7 @@ Spec (lengths in mm, walls by centerline):
   "country": "qa",                       # loads scripts/profiles/<country>.json
   "project": {"title": "...", "title_ar": "...", "client": "...", "plot": "...",
               "drawing": "Ground Floor Plan", "drawing_ar": "...", "number": "A-101",
-              "rev": "0", "date": "2026-10-29", "drawn": "building-skill"},
+              "rev": "0", "date": "2026-10-29", "drawn": "ArchMind"},
   "walls":    [{"from": [0, 0], "to": [12000, 0], "thk": 250}],
   "openings": [{"wall": 0, "at": 2000, "width": 1000, "kind": "door",
                 "into": [3000, 3000], "hinge": "start", "tag": "D1"},
@@ -73,6 +73,7 @@ def setup_doc(prof):
         "dimasz": d["arrow"], "dimtsz": d["arrow"] if d.get("ticks", True) else 0,
         "dimexo": d["ext_offset"], "dimexe": d["ext_extend"], "dimgap": d["gap"],
         "dimdec": d["decimals"], "dimlunit": d["lunit"], "dimlfac": d.get("lfac", 1.0),
+        "dimdsep": ord(d.get("dsep", ".")),   # "," for comma-decimal countries
         "dimtad": 1, "dimjust": 0, "dimzin": d.get("zin", 8), "dimtih": 0, "dimtoh": 0,
         "dimclrd": 256, "dimclre": 256, "dimclrt": 256,
     }.items():

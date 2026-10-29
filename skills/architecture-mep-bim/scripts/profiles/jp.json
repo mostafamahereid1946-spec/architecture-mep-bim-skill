@@ -1,0 +1,125 @@
+{
+  "extends": "qa",
+  "_note": "Japan: metric, dims in mm without unit, Japanese labels (MS Gothic) per JIS A 0150 practice, AIA/ISO-13567-style layers kept (no national scheme for private work) with A-AREA for the 面積求積 area layer. See references/countries/jp.md",
+  "country": "Japan",
+  "bilingual": false,
+  "scale_label": "S=1/100",
+  "text": {
+    "style": "JP-ARIAL",
+    "font": "msgothic.ttc"
+  },
+  "dim": {
+    "name": "JP-100"
+  },
+  "titleblock_fields": [
+    [
+      "工事名称",
+      "",
+      "title"
+    ],
+    [
+      "建築主",
+      "",
+      "client"
+    ],
+    [
+      "敷地地名地番",
+      "",
+      "plot"
+    ],
+    [
+      "図面名称",
+      "",
+      "drawing"
+    ],
+    [
+      "図面番号",
+      "",
+      "number"
+    ],
+    [
+      "縮尺",
+      "",
+      "scale"
+    ],
+    [
+      "日付",
+      "",
+      "date"
+    ],
+    [
+      "設計者(建築士登録番号)",
+      "",
+      "drawn"
+    ],
+    [
+      "改訂",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "A-WALL",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "A-WALL-PATT",
+      8,
+      9
+    ],
+    "door": [
+      "A-DOOR",
+      3,
+      25
+    ],
+    "window": [
+      "A-GLAZ",
+      5,
+      25
+    ],
+    "tag": [
+      "A-ANNO-SYMB",
+      2,
+      18
+    ],
+    "room": [
+      "A-AREA",
+      2,
+      18
+    ],
+    "grid": [
+      "A-GRID",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "A-ANNO-DIMS",
+      1,
+      18
+    ],
+    "titleblock": [
+      "A-ANNO-TTLB",
+      7,
+      35
+    ],
+    "viewport": [
+      "A-ANNO-NPLT",
+      6,
+      9
+    ],
+    "plot": [
+      "C-PROP-LINE",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "A-ANNO-TEXT",
+      7,
+      18
+    ]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "extends": "qa",
+  "_note": "Morocco: metric, plan dims in cm, French drawings with bilingual French/Arabic cartouche, French plain layer names (MUR, PORTE, FENETRE, AXES, COTATION...) per local practice, no national standard. See references/countries/ma.md",
+  "country": "Morocco",
+  "bilingual": true,
+  "scale_label": "Éch. 1/100",
+  "text": {
+    "style": "MA-ARIAL"
+  },
+  "dim": {
+    "name": "MA-100-CM",
+    "lfac": 0.1,
+    "decimals": 0
+  },
+  "layers": {
+    "wall": [
+      "MUR",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "HACHURE",
+      8,
+      9
+    ],
+    "door": [
+      "PORTE",
+      3,
+      25
+    ],
+    "window": [
+      "FENETRE",
+      5,
+      25
+    ],
+    "tag": [
+      "REPERE",
+      2,
+      18
+    ],
+    "room": [
+      "PIECE",
+      2,
+      18
+    ],
+    "grid": [
+      "AXES",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "COTATION",
+      1,
+      18
+    ],
+    "titleblock": [
+      "CARTOUCHE",
+      7,
+      35
+    ],
+    "viewport": [
+      "VIEWPORT",
+      6,
+      9
+    ],
+    "plot": [
+      "LIMITE_PARCELLE",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "TEXTE",
+      7,
+      18
+    ]
+  },
+  "titleblock_fields": [
+    [
+      "PROJET",
+      "المشروع",
+      "title"
+    ],
+    [
+      "MAÎTRE D'OUVRAGE",
+      "صاحب المشروع",
+      "client"
+    ],
+    [
+      "TF N° / COMMUNE",
+      "الرسم العقاري / الجماعة",
+      "plot"
+    ],
+    [
+      "PLAN",
+      "اسم اللوحة",
+      "drawing"
+    ],
+    [
+      "PLAN N°",
+      "رقم اللوحة",
+      "number"
+    ],
+    [
+      "ÉCHELLE",
+      "المقياس",
+      "scale"
+    ],
+    [
+      "DATE",
+      "التاريخ",
+      "date"
+    ],
+    [
+      "ARCHITECTE (OMA N°) / BET",
+      "المهندس المعماري",
+      "drawn"
+    ],
+    [
+      "INDICE",
+      "المراجعة",
+      "rev"
+    ]
+  ]
+}

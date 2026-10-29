@@ -1,0 +1,60 @@
+{
+  "extends": "qa",
+  "_note": "Oman: metric, dims in mm (office may use m), Arabic+English bilingual, no national layer standard so AIA-style layers kept. See references/countries/om.md",
+  "country": "Oman",
+  "bilingual": true,
+  "scale_label": "1:100 @ A1",
+  "text": {
+    "style": "OM-ARIAL"
+  },
+  "dim": {
+    "name": "OM-100"
+  },
+  "titleblock_fields": [
+    [
+      "PROJECT",
+      "المشروع",
+      "title"
+    ],
+    [
+      "OWNER",
+      "المالك",
+      "client"
+    ],
+    [
+      "PLOT / PLAN / WILAYAT",
+      "رقم القطعة / المخطط / الولاية",
+      "plot"
+    ],
+    [
+      "DRAWING",
+      "اسم اللوحة",
+      "drawing"
+    ],
+    [
+      "DRAWING No.",
+      "رقم اللوحة",
+      "number"
+    ],
+    [
+      "SCALE",
+      "المقياس",
+      "scale"
+    ],
+    [
+      "DATE",
+      "التاريخ",
+      "date"
+    ],
+    [
+      "CONSULTANT / REG. No.",
+      "الاستشاري / رقم التسجيل",
+      "drawn"
+    ],
+    [
+      "REV",
+      "المراجعة",
+      "rev"
+    ]
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "extends": "qa",
+  "_note": "Italy: metric, dims in m (2 dp), Italian labels, UNI EN ISO 13567-style studio layers per reference (A-MURI-PORTANTI, A-SERRAMENTI, A-ASSI, A-QUOTE, A-CATASTO...); no mandatory scheme. See references/countries/it.md",
+  "country": "Italy",
+  "bilingual": false,
+  "scale_label": "Scala 1:100",
+  "text": {
+    "style": "IT-ARIAL"
+  },
+  "dim": {
+    "name": "IT-100-M",
+    "lfac": 0.001,
+    "decimals": 2,
+    "zin": 0,
+    "dsep": ","
+  },
+  "titleblock_fields": [
+    [
+      "OGGETTO",
+      "",
+      "title"
+    ],
+    [
+      "COMMITTENTE",
+      "",
+      "client"
+    ],
+    [
+      "UBICAZIONE (FOGLIO / MAPPALE / SUB)",
+      "",
+      "plot"
+    ],
+    [
+      "TAVOLA",
+      "",
+      "drawing"
+    ],
+    [
+      "TAVOLA N.",
+      "",
+      "number"
+    ],
+    [
+      "SCALA",
+      "",
+      "scale"
+    ],
+    [
+      "DATA",
+      "",
+      "date"
+    ],
+    [
+      "PROGETTISTA (ALBO N.)",
+      "",
+      "drawn"
+    ],
+    [
+      "REVISIONE",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "A-MURI-PORTANTI",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "A-CAMPITURE",
+      8,
+      9
+    ],
+    "door": [
+      "A-SERRAMENTI-PORTE",
+      3,
+      25
+    ],
+    "window": [
+      "A-SERRAMENTI-FINESTRE",
+      5,
+      25
+    ],
+    "tag": [
+      "A-TESTI-SIGLE",
+      2,
+      18
+    ],
+    "room": [
+      "A-TESTI-LOCALI",
+      2,
+      18
+    ],
+    "grid": [
+      "A-ASSI",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "A-QUOTE",
+      1,
+      18
+    ],
+    "titleblock": [
+      "A-CARTIGLIO",
+      7,
+      35
+    ],
+    "viewport": [
+      "A-VIEWPORT-NPLT",
+      6,
+      9
+    ],
+    "plot": [
+      "A-CATASTO",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "A-TESTI",
+      7,
+      18
+    ]
+  }
+}

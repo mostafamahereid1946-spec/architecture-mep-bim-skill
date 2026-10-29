@@ -1,0 +1,60 @@
+{
+  "extends": "qa",
+  "_note": "Canada: code is metric so plans in mm, English (French mandatory in Quebec: swap labels), AIA / US National CAD Standard layers, no mandatory national standard. See references/countries/ca.md",
+  "country": "Canada",
+  "bilingual": false,
+  "scale_label": "1:100 @ A1",
+  "text": {
+    "style": "CA-ARIAL"
+  },
+  "dim": {
+    "name": "CA-100"
+  },
+  "titleblock_fields": [
+    [
+      "PROJECT",
+      "",
+      "title"
+    ],
+    [
+      "CLIENT",
+      "",
+      "client"
+    ],
+    [
+      "CIVIC / LEGAL ADDRESS (LOT / PLAN)",
+      "",
+      "plot"
+    ],
+    [
+      "DRAWING TITLE",
+      "",
+      "drawing"
+    ],
+    [
+      "SHEET No.",
+      "",
+      "number"
+    ],
+    [
+      "SCALE",
+      "",
+      "scale"
+    ],
+    [
+      "DATE (YYYY-MM-DD)",
+      "",
+      "date"
+    ],
+    [
+      "DESIGNER (REG. No. / SEAL)",
+      "",
+      "drawn"
+    ],
+    [
+      "REVISION",
+      "",
+      "rev"
+    ]
+  ]
+}

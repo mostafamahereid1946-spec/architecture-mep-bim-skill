@@ -1,0 +1,128 @@
+{
+  "extends": "qa",
+  "_note": "Spain: metric, dims in m (2 dp), Castilian labels, UNE-EN ISO 13567-style office layers per reference (A-MUROS, A-CARPINTERIA, A-VENTANAS, A-EJES, A-COTAS...); no national licencia layer rule. See references/countries/es.md",
+  "country": "Spain",
+  "bilingual": false,
+  "scale_label": "Esc. 1:100",
+  "text": {
+    "style": "ES-ARIAL"
+  },
+  "dim": {
+    "name": "ES-100-M",
+    "lfac": 0.001,
+    "decimals": 2,
+    "zin": 0,
+    "dsep": ","
+  },
+  "titleblock_fields": [
+    [
+      "PROYECTO",
+      "",
+      "title"
+    ],
+    [
+      "PROMOTOR",
+      "",
+      "client"
+    ],
+    [
+      "REFERENCIA CATASTRAL",
+      "",
+      "plot"
+    ],
+    [
+      "PLANO",
+      "",
+      "drawing"
+    ],
+    [
+      "Nº PLANO",
+      "",
+      "number"
+    ],
+    [
+      "ESCALA",
+      "",
+      "scale"
+    ],
+    [
+      "FECHA",
+      "",
+      "date"
+    ],
+    [
+      "ARQUITECTO (Nº COLEGIADO)",
+      "",
+      "drawn"
+    ],
+    [
+      "REVISIÓN",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "A-MUROS",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "A-SOMBREADO",
+      8,
+      9
+    ],
+    "door": [
+      "A-CARPINTERIA",
+      3,
+      25
+    ],
+    "window": [
+      "A-VENTANAS",
+      5,
+      25
+    ],
+    "tag": [
+      "A-TEXTOS-REF",
+      2,
+      18
+    ],
+    "room": [
+      "A-TEXTOS-ESTANCIAS",
+      2,
+      18
+    ],
+    "grid": [
+      "A-EJES",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "A-COTAS",
+      1,
+      18
+    ],
+    "titleblock": [
+      "A-CAJETIN",
+      7,
+      35
+    ],
+    "viewport": [
+      "A-VIEWPORT-NPLT",
+      6,
+      9
+    ],
+    "plot": [
+      "A-LIMITE-PARCELA",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "A-TEXTOS",
+      7,
+      18
+    ]
+  }
+}

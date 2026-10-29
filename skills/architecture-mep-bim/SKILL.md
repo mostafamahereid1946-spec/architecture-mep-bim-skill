@@ -1,9 +1,9 @@
 ---
-name: building-skill
+name: architecture-mep-bim
 description: Use when drawing, modeling, checking or documenting any building — architectural, structural, MEP (HVAC, plumbing, drainage, electrical, fire), civil/site, interiors, renders — in AutoCAD (incl. MEP, Electrical, Mechanical), Revit, SketchUp, 3ds Max, Civil 3D, Blender/Bonsai or as DXF/DWG/IFC files; whenever a floor plan, permit set, shop drawing, BIM model or render must follow a country's building code, drafting convention or authority (Qatar, Egypt, Saudi Arabia, UAE, USA, UK or any other country); or when asked about setbacks, coverage, room sizes, stairs, egress, layer standards, title blocks or bilingual Arabic/English drawings.
 ---
 
-# Building Skill
+# ArchMind — Architecture · MEP · BIM
 
 Drawings get rejected for jurisdiction reasons, not geometry. **Pin the country and the plot before drawing anything; take every code number from the references with its citation; verify the output in the real app before calling it done.**
 

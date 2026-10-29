@@ -1,0 +1,128 @@
+{
+  "extends": "qa",
+  "_note": "France: metric, dims in m (2 dp), levels NGF, French labels, NF EN ISO 13567-style layers per reference (A-MUR-PORT, A-MENUISERIE, A-AXE, A-COTATION, A-LIMITE-PARCELLE...); no mandatory national layer scheme. See references/countries/fr.md",
+  "country": "France",
+  "bilingual": false,
+  "scale_label": "Éch. 1/100",
+  "text": {
+    "style": "FR-ARIAL"
+  },
+  "dim": {
+    "name": "FR-100-M",
+    "lfac": 0.001,
+    "decimals": 2,
+    "zin": 0,
+    "dsep": ","
+  },
+  "titleblock_fields": [
+    [
+      "PROJET",
+      "",
+      "title"
+    ],
+    [
+      "MAÎTRE D'OUVRAGE",
+      "",
+      "client"
+    ],
+    [
+      "PARCELLE (SECTION / N°)",
+      "",
+      "plot"
+    ],
+    [
+      "PIÈCE / INTITULÉ",
+      "",
+      "drawing"
+    ],
+    [
+      "N° DE PLAN",
+      "",
+      "number"
+    ],
+    [
+      "ÉCHELLE",
+      "",
+      "scale"
+    ],
+    [
+      "DATE",
+      "",
+      "date"
+    ],
+    [
+      "ARCHITECTE (N° ORDRE)",
+      "",
+      "drawn"
+    ],
+    [
+      "INDICE",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "A-MUR-PORT",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "A-HACHURE",
+      8,
+      9
+    ],
+    "door": [
+      "A-MENUISERIE-PORTE",
+      3,
+      25
+    ],
+    "window": [
+      "A-MENUISERIE-FEN",
+      5,
+      25
+    ],
+    "tag": [
+      "A-TEXTE-REPERE",
+      2,
+      18
+    ],
+    "room": [
+      "A-TEXTE-PIECE",
+      2,
+      18
+    ],
+    "grid": [
+      "A-AXE",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "A-COTATION",
+      1,
+      18
+    ],
+    "titleblock": [
+      "A-CARTOUCHE",
+      7,
+      35
+    ],
+    "viewport": [
+      "A-VIEWPORT-NPLT",
+      6,
+      9
+    ],
+    "plot": [
+      "A-LIMITE-PARCELLE",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "A-TEXTE",
+      7,
+      18
+    ]
+  }
+}

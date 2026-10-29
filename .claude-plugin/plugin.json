@@ -1,8 +1,8 @@
 {
-  "name": "building-skill",
+  "name": "architecture-mep-bim",
   "version": "0.1.0",
   "description": "Architecture, construction, BIM and MEP skill for Claude: country-correct AutoCAD/DXF drawings, Revit/IFC, SketchUp, 3ds Max renders and building-code checks for Qatar, Saudi Arabia, UAE, Egypt, USA, UK and more.",
-  "author": {"name": "building-skill contributors"},
+  "author": {"name": "mostafamahereid1946-spec"},
   "license": "MIT",
   "keywords": ["autocad", "revit", "bim", "ifc", "sketchup", "3ds-max", "architecture", "construction", "mep", "hvac", "electrical", "plumbing", "building-code", "dxf", "dwg", "qatar", "saudi", "uae", "egypt"]
 }

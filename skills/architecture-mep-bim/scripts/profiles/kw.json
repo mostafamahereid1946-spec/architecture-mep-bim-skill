@@ -1,0 +1,63 @@
+{
+  "extends": "qa",
+  "_note": "Kuwait: metric, plan dims in m (2 dp, office may use cm), levels +0.00 from sidewalk, Arabic+English bilingual, no official layer standard so AIA-style layers kept. See references/countries/kw.md",
+  "country": "Kuwait",
+  "bilingual": true,
+  "scale_label": "1:100 @ A1",
+  "text": {
+    "style": "KW-ARIAL"
+  },
+  "dim": {
+    "name": "KW-100-M",
+    "lfac": 0.001,
+    "decimals": 2,
+    "zin": 0
+  },
+  "titleblock_fields": [
+    [
+      "PROJECT",
+      "المشروع",
+      "title"
+    ],
+    [
+      "OWNER",
+      "المالك",
+      "client"
+    ],
+    [
+      "AREA / BLOCK / PLOT / STREET",
+      "المنطقة / القطعة / القسيمة / الشارع",
+      "plot"
+    ],
+    [
+      "DRAWING",
+      "اسم اللوحة",
+      "drawing"
+    ],
+    [
+      "DRAWING No.",
+      "رقم اللوحة",
+      "number"
+    ],
+    [
+      "SCALE",
+      "المقياس",
+      "scale"
+    ],
+    [
+      "DATE",
+      "التاريخ",
+      "date"
+    ],
+    [
+      "CONSULTANT / KSE STAMP",
+      "الاستشاري / ختم جمعية المهندسين",
+      "drawn"
+    ],
+    [
+      "REV",
+      "المراجعة",
+      "rev"
+    ]
+  ]
+}

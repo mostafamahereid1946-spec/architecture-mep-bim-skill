@@ -1,0 +1,126 @@
+{
+  "extends": "qa",
+  "_note": "Jordan: metric, floor-plan dims in cm (site/setback plans in m), Arabic official + English, office-specific plain ASCII layers (WALL, DOOR, WINDOW, DIM, TEXT, PLOT_LINE, AXIS...), no national standard. See references/countries/jo.md",
+  "country": "Jordan",
+  "bilingual": true,
+  "scale_label": "1:100 @ A1",
+  "text": {
+    "style": "JO-ARIAL"
+  },
+  "dim": {
+    "name": "JO-100-CM",
+    "lfac": 0.1,
+    "decimals": 0
+  },
+  "titleblock_fields": [
+    [
+      "PROJECT",
+      "المشروع",
+      "title"
+    ],
+    [
+      "OWNER",
+      "المالك",
+      "client"
+    ],
+    [
+      "PLOT / BASIN / DISTRICT",
+      "رقم القطعة / الحوض / الحي",
+      "plot"
+    ],
+    [
+      "DRAWING",
+      "اسم اللوحة",
+      "drawing"
+    ],
+    [
+      "DRAWING No.",
+      "رقم اللوحة",
+      "number"
+    ],
+    [
+      "SCALE",
+      "المقياس",
+      "scale"
+    ],
+    [
+      "DATE",
+      "التاريخ",
+      "date"
+    ],
+    [
+      "ENGINEER / JEA No.",
+      "المهندس / رقم نقابة المهندسين",
+      "drawn"
+    ],
+    [
+      "REV",
+      "المراجعة",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "WALL",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "HATCH",
+      8,
+      9
+    ],
+    "door": [
+      "DOOR",
+      3,
+      25
+    ],
+    "window": [
+      "WINDOW",
+      5,
+      25
+    ],
+    "tag": [
+      "TAG",
+      2,
+      18
+    ],
+    "room": [
+      "ROOM",
+      2,
+      18
+    ],
+    "grid": [
+      "AXIS",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "DIM",
+      1,
+      18
+    ],
+    "titleblock": [
+      "TITLEBLOCK",
+      7,
+      35
+    ],
+    "viewport": [
+      "VIEWPORT",
+      6,
+      9
+    ],
+    "plot": [
+      "PLOT_LINE",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "TEXT",
+      7,
+      18
+    ]
+  }
+}

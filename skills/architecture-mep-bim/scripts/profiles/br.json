@@ -1,0 +1,128 @@
+{
+  "extends": "qa",
+  "_note": "Brazil: metric, dims in m (2 dp), Portuguese labels per ABNT NBR 6492 practice, Portuguese plain layer names (PAREDE, PORTA, JANELA, EIXO, COTA...), no mandatory layer standard. See references/countries/br.md",
+  "country": "Brazil",
+  "bilingual": false,
+  "scale_label": "Escala 1:100",
+  "text": {
+    "style": "BR-ARIAL"
+  },
+  "dim": {
+    "name": "BR-100-M",
+    "lfac": 0.001,
+    "decimals": 2,
+    "zin": 0,
+    "dsep": ","
+  },
+  "titleblock_fields": [
+    [
+      "EMPREENDIMENTO",
+      "",
+      "title"
+    ],
+    [
+      "PROPRIETÁRIO",
+      "",
+      "client"
+    ],
+    [
+      "INSCRIÇÃO IMOBILIÁRIA / LOTE",
+      "",
+      "plot"
+    ],
+    [
+      "CONTEÚDO DA PRANCHA",
+      "",
+      "drawing"
+    ],
+    [
+      "PRANCHA Nº",
+      "",
+      "number"
+    ],
+    [
+      "ESCALA",
+      "",
+      "scale"
+    ],
+    [
+      "DATA",
+      "",
+      "date"
+    ],
+    [
+      "RESP. TÉCNICO (CREA/CAU, ART/RRT)",
+      "",
+      "drawn"
+    ],
+    [
+      "REVISÃO",
+      "",
+      "rev"
+    ]
+  ],
+  "layers": {
+    "wall": [
+      "PAREDE",
+      7,
+      50
+    ],
+    "wall_hatch": [
+      "HACHURA",
+      8,
+      9
+    ],
+    "door": [
+      "PORTA",
+      3,
+      25
+    ],
+    "window": [
+      "JANELA",
+      5,
+      25
+    ],
+    "tag": [
+      "ESQUADRIA-TAG",
+      2,
+      18
+    ],
+    "room": [
+      "AMBIENTE",
+      2,
+      18
+    ],
+    "grid": [
+      "EIXO",
+      1,
+      13,
+      "CENTER"
+    ],
+    "dim": [
+      "COTA",
+      1,
+      18
+    ],
+    "titleblock": [
+      "CARIMBO",
+      7,
+      35
+    ],
+    "viewport": [
+      "VIEWPORT",
+      6,
+      9
+    ],
+    "plot": [
+      "LIMITE-LOTE",
+      1,
+      35,
+      "PHANTOM"
+    ],
+    "notes": [
+      "TEXTO",
+      7,
+      18
+    ]
+  }
+}
