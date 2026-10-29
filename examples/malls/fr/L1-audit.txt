@@ -1,0 +1,9 @@
+plan_audit: examples/malls/fr/L1.json  country=fr
+PASS [rooms] 49 rooms matched to 49 enclosed polygons; net areas within 5% of spec
+PASS [circulation] 119 doors; all 49 rooms reachable from OUTSIDE
+PASS [doors] 119 doors / 36 windows: placement, swings and overlaps OK
+PASS [dead-space] no dead-end corridor/hall over 6 m2
+PASS [sizes] area/width minima: no room-size number in references/countries/fr.md -> generic rule of thumb (lower bound of architecture.md section 3 typical range)
+PASS [habitability] every habitable room has a window to OUTSIDE/courtyard; no WC/bath door straight into kitchen/dining/majlis
+PASS [privacy] not applicable (country 'fr' is not a Gulf profile)
+SUMMARY: 7 pass, 0 warn, 0 fail

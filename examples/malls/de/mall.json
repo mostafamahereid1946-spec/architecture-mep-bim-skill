@@ -1,0 +1,125 @@
+{
+ "country": "de",
+ "profile_country": "Germany",
+ "levels": [
+  "GF",
+  "L1"
+ ],
+ "files": {
+  "GF": "GF.json",
+  "L1": "L1.json"
+ },
+ "bilingual": false,
+ "plot_m": [
+  120.0,
+  90.0
+ ],
+ "footprint_m": [
+  109.2,
+  62.4
+ ],
+ "bays": {
+  "total": 13,
+  "anchor_each": 2,
+  "street": 9
+ },
+ "shops_per_level": [
+  5,
+  9
+ ],
+ "coverage_pct": 63.1,
+ "gla_m2": 5909,
+ "parking": {
+  "required": 237,
+  "shown": 45,
+  "ratio_m2_per_bay": 25.0,
+  "source": "rule of thumb 4 bays per 100 m2 GLA",
+  "warn": true,
+  "note": "surface bays shown as ground massing; balance assumed basement/off-plot, not modelled"
+ },
+ "travel": {
+  "ok": true,
+  "limit_m": 35.0,
+  "source": "de.md 5 MBO 35(2): any point of a room to stair/outside <= 35 m",
+  "warn": false,
+  "computed": [
+   {
+    "level": "GF",
+    "max_m": 33.5,
+    "room": "AM2P",
+    "pt": [
+     72800,
+     73600
+    ]
+   },
+   {
+    "level": "L1",
+    "max_m": 33.5,
+    "room": "AM2P",
+    "pt": [
+     72800,
+     73600
+    ]
+   }
+  ],
+  "stairs_per_level": [
+   5,
+   5
+  ],
+  "exterior_exit_doors_per_level": [
+   39,
+   37
+  ],
+  "extra_cores": [
+   "s6",
+   "n1",
+   "s2"
+  ]
+ },
+ "setbacks": {
+  "front": 5000,
+  "side": 3000,
+  "rear": 3000,
+  "source": "ASSUMED 5/3/3 m - no commercial-zone setbacks in country file",
+  "warn": true
+ },
+ "coverage_rule": null,
+ "stair_clear_width_mm": {
+  "value": 1000,
+  "source": "de.md 5 stair clear width >= 1.00 m",
+  "warn": false
+ },
+ "gf_height_mm": {
+  "value": 5000,
+  "source": "rule of thumb 4.5-5.5 m GF floor-to-floor",
+  "warn": true
+ },
+ "upper_height_mm": 4500,
+ "sprinkler": {
+  "std": "EN 12845 OH",
+  "max_area": 12.0,
+  "max_spacing": 4000,
+  "src": "references/disciplines/mep.md 4.1"
+ },
+ "scale": {
+  "ratio": 250,
+  "label": "M 1:250"
+ },
+ "render": {
+  "city": "Frankfurt",
+  "BS_LAT": 50.11,
+  "BS_LON": 8.68,
+  "BS_TZ": 1,
+  "BS_HEIGHT": 5000
+ },
+ "design_rules": [
+  "Structural grid 8.4 m [RoT: references/disciplines/structural.md 3 retail 7.5-9 m]",
+  "Mall street 12.0 m double-loaded, central atrium = lobby bays [RoT]",
+  "Shops 8.4 m x 21.0 m (brief 18-25 m) [RoT]; service corridor 4.2 m [RoT]",
+  "Two anchors at street ends, 2 bays wide (3 on large plots) [RoT]",
+  "No prayer rooms (country not in Muslim-majority list)",
+  "Travel distance to exit: de.md 5 MBO 35(2): any point of a room to stair/outside <= 35 m",
+  "Escape stair width: de.md 5 stair clear width >= 1.00 m",
+  "Sprinkler/detector/diffuser spacing: references/disciplines/mep.md 4.1, 4.3, 1.5"
+ ]
+}

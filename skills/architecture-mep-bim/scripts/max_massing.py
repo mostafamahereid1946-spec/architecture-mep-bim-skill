@@ -7,7 +7,8 @@ Run headless (Windows, licensed 3ds Max 2024+):
 
 Optional env: BS_W/BS_H (pixels, default 1600x900), BS_HEIGHT (storey mm, 3300),
 BS_RENDERER (art | arnold; Arnold watermarks batch renders without a batch licence),
-BS_SECONDS (ART time budget, 120), BS_SAMPLES (Arnold AA, 4). Saves <out>.max next to the image.
+BS_SECONDS (ART time budget, 120), BS_SAMPLES (Arnold AA, 4), BS_CAM_Z (camera height mm), BS_CAM_K (camera distance factor, 1),
+BS_EV (exposure value, 15; higher = darker), BS_LAT/BS_LON/BS_TZ/BS_MONTH/BS_HOUR (sun). Saves <out>.max next to the image.
 Walls are split around openings exactly like the plan: sill + head pieces for
 windows, lintel for doors, glass panes in window gaps.
 """
@@ -151,9 +152,10 @@ def light_and_camera(bounds):
     rt.useEnvironmentMap = True
     span = max(x1 - x0, y1 - y0)
     cam = rt.Physical_Camera(name="Hero_Cam")
-    cam.pos = rt.Point3(x0 - span * 0.55, y0 - span * 0.95, float(os.environ.get("BS_CAM_Z", 1700)))
+    k = float(os.environ.get("BS_CAM_K", 1.0))   # <1 moves the camera closer (large buildings)
+    cam.pos = rt.Point3(x0 - span * 0.55 * k, y0 - span * 0.95 * k, float(os.environ.get("BS_CAM_Z", 1700)))
     cam.target = rt.Targetobject(pos=rt.Point3(cx + span * 0.05, cy, STOREY * 0.45))
-    for prop, val in (("focal_length_mm", 28.0), ("exposure_gain_type", 1), ("exposure_value", 15.0),
+    for prop, val in (("focal_length_mm", 28.0), ("exposure_gain_type", 1), ("exposure_value", float(os.environ.get("BS_EV", 15.0))),
                       ("white_balance_type", 1), ("white_balance_kelvin", 6000.0),
                       ("auto_vertical_tilt_correction", True)):
         try:

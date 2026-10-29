@@ -1,0 +1,1 @@
+wrote examples\malls\au\GF.ifc  {'IfcWall': 66, 'IfcDoor': 127, 'IfcWindow': 33, 'IfcOpeningElement': 160, 'IfcSlab': 5, 'IfcSpace': 49}  validation_issues=0

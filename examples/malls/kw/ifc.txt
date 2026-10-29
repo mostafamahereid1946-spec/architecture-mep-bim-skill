@@ -1,0 +1,1 @@
+wrote examples\malls\kw\GF.ifc  {'IfcWall': 60, 'IfcDoor': 119, 'IfcWindow': 35, 'IfcOpeningElement': 154, 'IfcSlab': 5, 'IfcSpace': 45}  validation_issues=0

@@ -1,0 +1,121 @@
+{
+ "country": "sa",
+ "profile_country": "Saudi Arabia",
+ "levels": [
+  "GF",
+  "L1"
+ ],
+ "files": {
+  "GF": "GF.json",
+  "L1": "L1.json"
+ },
+ "bilingual": true,
+ "plot_m": [
+  120.0,
+  90.0
+ ],
+ "footprint_m": [
+  109.2,
+  62.4
+ ],
+ "bays": {
+  "total": 13,
+  "anchor_each": 2,
+  "street": 9
+ },
+ "shops_per_level": [
+  8,
+  12
+ ],
+ "coverage_pct": 63.1,
+ "gla_m2": 6935,
+ "parking": {
+  "required": 155,
+  "shown": 45,
+  "ratio_m2_per_bay": 45.0,
+  "source": "sa.md 5.6 shops 1 bay per 45 m2, min 1 per shop",
+  "warn": false,
+  "note": "surface bays shown as ground massing; balance assumed basement/off-plot, not modelled"
+ },
+ "travel": {
+  "ok": true,
+  "limit_m": 76.0,
+  "source": "sa.md 5.5 SBC 201 R-2 sprinklered 76 m (B 91 m); mercantile not listed, IBC M 250 ft per us.md 5.3",
+  "warn": true,
+  "computed": [
+   {
+    "level": "GF",
+    "max_m": 42.1,
+    "room": "AM1P",
+    "pt": [
+     39200,
+     73600
+    ]
+   },
+   {
+    "level": "L1",
+    "max_m": 51.6,
+    "room": "FU3",
+    "pt": [
+     60200,
+     15800
+    ]
+   }
+  ],
+  "stairs_per_level": [
+   2,
+   2
+  ],
+  "exterior_exit_doors_per_level": [
+   28,
+   26
+  ],
+  "extra_cores": []
+ },
+ "setbacks": {
+  "front": 5000,
+  "side": 3000,
+  "rear": 3000,
+  "source": "ASSUMED 5/3/3 m - no commercial-zone setbacks in country file",
+  "warn": true
+ },
+ "coverage_rule": null,
+ "stair_clear_width_mm": {
+  "value": 1118,
+  "source": "sa.md 5.5 stairs 1118 mm (>=50 occupants)",
+  "warn": true
+ },
+ "gf_height_mm": {
+  "value": 5000,
+  "source": "rule of thumb 4.5-5.5 m GF floor-to-floor",
+  "warn": true
+ },
+ "upper_height_mm": 4500,
+ "sprinkler": {
+  "std": "NFPA 13 OH2",
+  "max_area": 12.1,
+  "max_spacing": 4600,
+  "src": "references/disciplines/mep.md 4.1"
+ },
+ "scale": {
+  "ratio": 250,
+  "label": "1:250 @ A1"
+ },
+ "render": {
+  "city": "Riyadh",
+  "BS_LAT": 24.71,
+  "BS_LON": 46.68,
+  "BS_TZ": 3,
+  "BS_HEIGHT": 5000
+ },
+ "design_rules": [
+  "Structural grid 8.4 m [RoT: references/disciplines/structural.md 3 retail 7.5-9 m]",
+  "Mall street 12.0 m double-loaded, central atrium = lobby bays [RoT]",
+  "Shops 8.4 m x 21.0 m (brief 18-25 m) [RoT]; service corridor 4.2 m [RoT]",
+  "Two anchors at street ends, 2 bays wide (3 on large plots) [RoT]",
+  "Muslim-majority: prayer room + ablution men/women [references/disciplines/design-concepts.md 6.6]",
+  "Travel distance to exit: sa.md 5.5 SBC 201 R-2 sprinklered 76 m (B 91 m); mercantile not listed, IBC M 250 ft per us.md 5.3 (verify)",
+  "Escape stair width: sa.md 5.5 stairs 1118 mm (>=50 occupants) (verify)",
+  "Sprinkler/detector/diffuser spacing: references/disciplines/mep.md 4.1, 4.3, 1.5"
+ ]
+}

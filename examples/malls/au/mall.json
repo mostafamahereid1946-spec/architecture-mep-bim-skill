@@ -1,0 +1,124 @@
+{
+ "country": "au",
+ "profile_country": "Australia",
+ "levels": [
+  "GF",
+  "L1"
+ ],
+ "files": {
+  "GF": "GF.json",
+  "L1": "L1.json"
+ },
+ "bilingual": false,
+ "plot_m": [
+  120.0,
+  90.0
+ ],
+ "footprint_m": [
+  109.2,
+  62.4
+ ],
+ "bays": {
+  "total": 13,
+  "anchor_each": 2,
+  "street": 9
+ },
+ "shops_per_level": [
+  6,
+  10
+ ],
+ "coverage_pct": 63.1,
+ "gla_m2": 6251,
+ "parking": {
+  "required": 251,
+  "shown": 45,
+  "ratio_m2_per_bay": 25.0,
+  "source": "rule of thumb 4 bays per 100 m2 GLA",
+  "warn": true,
+  "note": "surface bays shown as ground massing; balance assumed basement/off-plot, not modelled"
+ },
+ "travel": {
+  "ok": true,
+  "limit_m": 40.0,
+  "source": "au.md 5 max 40 m to alternate exits (apartment figure from memory)",
+  "warn": true,
+  "computed": [
+   {
+    "level": "GF",
+    "max_m": 33.5,
+    "room": "AM2P",
+    "pt": [
+     72800,
+     73600
+    ]
+   },
+   {
+    "level": "L1",
+    "max_m": 38.0,
+    "room": "FU1",
+    "pt": [
+     50600,
+     15800
+    ]
+   }
+  ],
+  "stairs_per_level": [
+   4,
+   4
+  ],
+  "exterior_exit_doors_per_level": [
+   32,
+   30
+  ],
+  "extra_cores": [
+   "s6",
+   "n1"
+  ]
+ },
+ "setbacks": {
+  "front": 5000,
+  "side": 3000,
+  "rear": 3000,
+  "source": "ASSUMED 5/3/3 m - no commercial-zone setbacks in country file",
+  "warn": true
+ },
+ "coverage_rule": null,
+ "stair_clear_width_mm": {
+  "value": 1200,
+  "source": "rule of thumb 1200 mm clear",
+  "warn": true
+ },
+ "gf_height_mm": {
+  "value": 5000,
+  "source": "rule of thumb 4.5-5.5 m GF floor-to-floor",
+  "warn": true
+ },
+ "upper_height_mm": 4500,
+ "sprinkler": {
+  "std": "NFPA 13 OH2",
+  "max_area": 12.1,
+  "max_spacing": 4600,
+  "src": "references/disciplines/mep.md 4.1"
+ },
+ "scale": {
+  "ratio": 250,
+  "label": "1:250 @ A1"
+ },
+ "render": {
+  "city": "Sydney",
+  "BS_LAT": -33.87,
+  "BS_LON": 151.21,
+  "BS_TZ": 11,
+  "BS_HEIGHT": 5000
+ },
+ "design_rules": [
+  "Structural grid 8.4 m [RoT: references/disciplines/structural.md 3 retail 7.5-9 m]",
+  "Mall street 12.0 m double-loaded, central atrium = lobby bays [RoT]",
+  "Shops 8.4 m x 21.0 m (brief 18-25 m) [RoT]; service corridor 4.2 m [RoT]",
+  "Two anchors at street ends, 2 bays wide (3 on large plots) [RoT]",
+  "No prayer rooms (country not in Muslim-majority list)",
+  "Travel distance to exit: au.md 5 max 40 m to alternate exits (apartment figure from memory) (verify)",
+  "Escape stair width: rule of thumb 1200 mm clear (verify)",
+  "Sprinkler/detector/diffuser spacing: references/disciplines/mep.md 4.1, 4.3, 1.5"
+ ]
+}

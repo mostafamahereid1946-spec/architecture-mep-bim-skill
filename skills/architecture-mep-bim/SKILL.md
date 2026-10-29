@@ -61,6 +61,8 @@ digraph route {
 uv run --with ezdxf scripts/dxf_plan.py plan.json        # country-correct plan DXF (see --help for spec)
 uv run scripts/acad_verify.py plan.dxf --layout A1-GF    # real AutoCAD: AUDIT, DWG, PDF, report
 uvx --with matplotlib ezdxf draw -o preview.png plan.dxf # quick preview without AutoCAD
+uv run -q scripts/gen_mall.py --country qa --out examples/malls/qa  # parametric 2-level mall: GF.json + L1.json (+ mall.json, rules cited)
+uv run -q scripts/mep_overlay.py GF.json                 # after dxf_plan: sprinklers, detectors, diffusers, ducts, DBs, lighting, WC -> GF-MEP.dxf
 ```
 
 BIM from the same spec (Revit incl. LT, ArchiCAD, Bonsai import it; walls typed, openings are real voids, validated):
