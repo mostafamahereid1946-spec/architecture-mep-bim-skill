@@ -28,6 +28,7 @@ If the user can't answer, proceed and put an **ASSUMPTIONS** note on the drawing
 | Any other country | `references/countries/_world-index.md` → its code family → nearest family file, and say the National Annex/local amendments differ |
 | How a discipline's drawings are made | `references/disciplines/` architecture, structural, mep, mep-shop-drawings, civil-site |
 | Concept, typology, climate, precedents | `references/disciplines/design-concepts.md` |
+| How buildings are physically built there (structure, wall/roof build-ups, sequence, MEP practice) | `references/disciplines/construction-methods.md` |
 | Software workflow, scripting, MCP | `references/software/` autocad, autocad-mep-electrical-mechanical, revit, sketchup, 3dsmax, ifc-openbim |
 
 ## 3. Code numbers
