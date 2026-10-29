@@ -1,0 +1,43 @@
+{
+  "_note": "USA: drawn in inches (INSUNITS=1), architectural feet-inches dims, 1/4\"=1'-0\" residential plans on ARCH D 36x24, US National CAD Standard (AIA) layers, English only, area in SF. See references/countries/us.md",
+  "country": "United States",
+  "insunits": 1,
+  "mm_to_unit": 0.03937007874015748,
+  "scale": 48,
+  "ltscale": 0.03937,
+  "scale_label": "1/4\" = 1'-0\"",
+  "paper_mm": 0.03937007874015748,
+  "bilingual": false,
+  "area_fmt": "{ft2:.0f} SF",
+  "grid_x": "letters",
+  "text": {"style": "NCS-ARIAL", "font": "arial.ttf"},
+  "dim": {"name": "ARCH-48", "text_h": 0.09375, "arrow": 0.0625, "ticks": true, "ext_offset": 0.0625,
+          "ext_extend": 0.0625, "gap": 0.03125, "decimals": 4, "lunit": 4, "zin": 3},
+  "layers": {
+    "wall":       ["A-WALL", 7, 50],
+    "wall_hatch": ["A-WALL-PATT", 8, 9],
+    "door":       ["A-DOOR", 3, 25],
+    "window":     ["A-GLAZ", 4, 25],
+    "tag":        ["A-ANNO-SYMB", 2, 18],
+    "room":       ["A-AREA-IDEN", 2, 18],
+    "grid":       ["S-GRID", 1, 13, "CENTER"],
+    "dim":        ["A-ANNO-DIMS", 1, 18],
+    "titleblock": ["A-ANNO-TTLB", 7, 35],
+    "viewport":   ["A-ANNO-NPLT", 6, 9],
+    "plot":       ["C-PROP-LINE", 1, 35, "PHANTOM"],
+    "notes":      ["A-ANNO-NOTE", 7, 18]
+  },
+  "sheet": {"name": "ARCH-D", "w": 36, "h": 24, "margin": 0.5, "units": "inch",
+            "tb_w": 7, "tb_h": 6, "tb_text": 0.14, "model_per_paper": 1},
+  "titleblock_fields": [
+    ["PROJECT", "", "title"],
+    ["CLIENT", "", "client"],
+    ["LOT / BLOCK / SUBDIVISION", "", "plot"],
+    ["SHEET TITLE", "", "drawing"],
+    ["SHEET No.", "", "number"],
+    ["SCALE", "", "scale"],
+    ["DATE", "", "date"],
+    ["DRAWN BY", "", "drawn"],
+    ["REVISION", "", "rev"]
+  ]
+}

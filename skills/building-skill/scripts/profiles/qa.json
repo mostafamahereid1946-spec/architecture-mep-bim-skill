@@ -1,0 +1,40 @@
+{
+  "country": "Qatar",
+  "insunits": 4,
+  "scale": 100,
+  "scale_label": "1:100 @ A1",
+  "paper_mm": 1,
+  "bilingual": true,
+  "area_fmt": "{a:.2f} m²",
+  "grid_x": "numbers",
+  "text": {"style": "BS-ARIAL", "font": "arial.ttf"},
+  "dim": {"name": "BS-100", "text_h": 2.5, "arrow": 1.5, "ticks": true, "ext_offset": 1.5,
+          "ext_extend": 1.5, "gap": 0.8, "decimals": 0, "lunit": 2, "zin": 8},
+  "layers": {
+    "wall":       ["A-WALL", 7, 50],
+    "wall_hatch": ["A-WALL-PATT", 8, 9],
+    "door":       ["A-DOOR", 3, 25],
+    "window":     ["A-GLAZ", 5, 25],
+    "tag":        ["A-ANNO-SYMB", 2, 18],
+    "room":       ["A-AREA-IDEN", 2, 18],
+    "grid":       ["A-GRID", 1, 13, "CENTER"],
+    "dim":        ["A-ANNO-DIMS", 1, 18],
+    "titleblock": ["A-ANNO-TTLB", 7, 35],
+    "viewport":   ["A-ANNO-NPLT", 6, 9],
+    "plot":       ["C-PROP-LINE", 1, 35, "PHANTOM"],
+    "notes":      ["A-ANNO-NOTE", 7, 18]
+  },
+  "sheet": {"name": "A1-GF", "w": 841, "h": 594, "margin": 10, "units": "mm",
+            "tb_w": 180, "tb_h": 150, "tb_text": 3.5, "model_per_paper": 1},
+  "titleblock_fields": [
+    ["PROJECT", "المشروع", "title"],
+    ["CLIENT", "المالك", "client"],
+    ["PLOT / PIN No.", "رقم القطعة", "plot"],
+    ["DRAWING", "اسم اللوحة", "drawing"],
+    ["DRAWING No.", "رقم اللوحة", "number"],
+    ["SCALE", "المقياس", "scale"],
+    ["DATE", "التاريخ", "date"],
+    ["REV", "المراجعة", "rev"],
+    ["DRAWN BY", "إعداد", "drawn"]
+  ]
+}

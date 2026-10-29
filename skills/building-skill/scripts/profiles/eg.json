@@ -1,0 +1,24 @@
+{
+  "extends": "qa",
+  "_note": "Egypt: plan dims in cm (whole numbers), levels in m, area m2 2 dp; Arabic-primary title block; AIA-style layers common (no national standard). See references/countries/eg.md",
+  "country": "Egypt",
+  "scale_label": "1:100",
+  "area_fmt": "{a:.2f} م²",
+  "dim": {"name": "EG-100-CM", "lfac": 0.1, "decimals": 0},
+  "layers": {
+    "wall":   ["A-WALL", 2, 50],
+    "door":   ["A-DOOR", 4, 25],
+    "window": ["A-GLAZ", 5, 25]
+  },
+  "titleblock_fields": [
+    ["PROJECT", "اسم المشروع", "title"],
+    ["OWNER", "المالك", "client"],
+    ["PLOT / DISTRICT", "رقم القطعة / الحي", "plot"],
+    ["DRAWING", "اسم اللوحة", "drawing"],
+    ["DRAWING No.", "رقم اللوحة", "number"],
+    ["SCALE", "مقياس الرسم", "scale"],
+    ["DATE", "التاريخ", "date"],
+    ["ENGINEER / SYNDICATE No.", "المهندس / رقم القيد بالنقابة", "drawn"],
+    ["REV", "التعديل", "rev"]
+  ]
+}

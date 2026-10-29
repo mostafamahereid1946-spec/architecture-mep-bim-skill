@@ -1,0 +1,34 @@
+{
+  "extends": "qa",
+  "_note": "UK: mm without unit, 1:100/1:50, ISO A-series, English only, BS EN ISO 19650 container naming for drawing numbers, AEC (UK) layer naming Role-Uniclass2015-Presentation-Description (confirm codes against the client BIM Execution Plan). See references/countries/uk.md",
+  "country": "United Kingdom",
+  "bilingual": false,
+  "grid_x": "numbers",
+  "text": {"style": "UK-ARIAL", "font": "arial.ttf"},
+  "dim": {"name": "UK-100"},
+  "layers": {
+    "wall":       ["A-EF_25_10-M-Walls", 7, 50],
+    "wall_hatch": ["A-EF_25_10-H-WallsHatch", 8, 9],
+    "door":       ["A-EF_25_30-M-Doors", 2, 25],
+    "window":     ["A-EF_25_30-M-Windows", 4, 25],
+    "tag":        ["A-ZZ-T-OpeningTags", 7, 18],
+    "room":       ["A-SL-T-SpaceNames", 7, 18],
+    "grid":       ["S-ZZ-M-Grid", 1, 13, "CENTER"],
+    "dim":        ["A-ZZ-D-Dimensions", 1, 18],
+    "titleblock": ["A-ZZ-P-TitleBlock", 7, 35],
+    "viewport":   ["A-ZZ-P-Viewports-NPLT", 6, 9],
+    "plot":       ["C-ZZ-M-SiteBoundary", 1, 35, "PHANTOM"],
+    "notes":      ["A-ZZ-T-Notes", 7, 18]
+  },
+  "titleblock_fields": [
+    ["PROJECT", "", "title"],
+    ["CLIENT", "", "client"],
+    ["SITE", "", "plot"],
+    ["DRAWING TITLE", "", "drawing"],
+    ["DRAWING No. (ISO 19650)", "", "number"],
+    ["SCALE @ A1", "", "scale"],
+    ["DATE", "", "date"],
+    ["STATUS / REVISION", "", "rev"],
+    ["DRAWN", "", "drawn"]
+  ]
+}

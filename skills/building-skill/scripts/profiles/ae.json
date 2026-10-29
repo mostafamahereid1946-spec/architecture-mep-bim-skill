@@ -1,0 +1,17 @@
+{
+  "extends": "qa",
+  "_note": "UAE (Dubai Building Code A.12.1): dims in mm without unit, values over 1000 mm may be written in m with unit; English-primary drawings with bilingual title block; site plans in DLTM (Dubai) coordinates. See references/countries/ae.md",
+  "country": "United Arab Emirates",
+  "dim": {"name": "DBC-100"},
+  "titleblock_fields": [
+    ["PROJECT", "المشروع", "title"],
+    ["OWNER", "المالك", "client"],
+    ["PLOT No. / COMMUNITY", "رقم الأرض / المنطقة", "plot"],
+    ["DRAWING", "اسم اللوحة", "drawing"],
+    ["DRAWING No.", "رقم اللوحة", "number"],
+    ["SCALE", "المقياس", "scale"],
+    ["DATE", "التاريخ", "date"],
+    ["CONSULTANT", "الاستشاري", "drawn"],
+    ["REV", "المراجعة", "rev"]
+  ]
+}

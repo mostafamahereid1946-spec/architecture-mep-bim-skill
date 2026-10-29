@@ -1,0 +1,11 @@
+# generated drawing artefacts (keep curated ones under examples/)
+*.scr
+*-report.txt
+*.bak
+*.dwl
+*.dwl2
+*.log
+__pycache__/
+.venv/
+# course transcripts are never published
+corpus/

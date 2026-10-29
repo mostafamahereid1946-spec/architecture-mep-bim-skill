@@ -1,0 +1,22 @@
+{
+  "extends": "qa",
+  "_note": "Saudi Arabia: municipal (Amanah/Balady) drawings dimension in metres to 2 dp, area m2 2 dp, Western digits, bilingual with Arabic mandatory owner/title fields, Hijri date beside Gregorian. AIA-style layers. See references/countries/sa.md",
+  "country": "Saudi Arabia",
+  "dim": {"name": "SA-100-M", "lfac": 0.001, "decimals": 2, "zin": 0},
+  "layers": {
+    "wall":   ["A-WALL", 2, 50],
+    "door":   ["A-DOOR", 4, 25],
+    "window": ["A-GLAZ", 5, 25]
+  },
+  "titleblock_fields": [
+    ["PROJECT", "اسم المشروع", "title"],
+    ["OWNER", "المالك", "client"],
+    ["PLOT / PLAN No.", "رقم القطعة / رقم المخطط", "plot"],
+    ["DRAWING", "اسم اللوحة", "drawing"],
+    ["DRAWING No.", "رقم اللوحة", "number"],
+    ["SCALE", "المقياس", "scale"],
+    ["DATE", "التاريخ", "date"],
+    ["ENGINEERING OFFICE", "المكتب الهندسي", "drawn"],
+    ["REV", "المراجعة", "rev"]
+  ]
+}
