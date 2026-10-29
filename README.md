@@ -56,6 +56,8 @@ All produced by the skill's scripts and verified in AutoCAD 2026 (AUDIT: 0 error
 
 ## Mall in every country
 
+**Live gallery:** https://mostafamahereid1946-spec.github.io/architecture-mep-bim-skill/examples/malls/ — one dashboard per country (pipeline, code check, design audit, plans, MEP, renders, downloads). Villa dashboard: https://mostafamahereid1946-spec.github.io/architecture-mep-bim-skill/examples/doha-courtyard-villa-dashboard.html
+
 One generator, 28 country profiles: a two-level shopping mall per country with cited setbacks, travel distances and sprinkler grids, plus DXF/DWG/PDF, MEP overlay, IFC and a design audit. Every country has its own offline dashboard. Open [`examples/malls/index.html`](examples/malls/index.html) (or read the [method and per-country results](examples/malls/README.md)). Renders from 3ds Max:
 
 | Qatar | Egypt |
