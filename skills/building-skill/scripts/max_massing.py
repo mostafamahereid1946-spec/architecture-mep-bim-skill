@@ -39,6 +39,10 @@ STONE = mat("Stone_Base", (176, 160, 138), 0.7)
 GLASS = mat("Glass_Clear", (40, 55, 60), 0.02, 0.9)
 FRAME = mat("Frame_Bronze", (60, 50, 42), 0.35)
 GROUND = mat("Ground_Paving", (150, 146, 138), 0.9)
+WATER = mat("Water", (30, 105, 135), 0.03)
+WOOD = mat("Wood_Teak", (122, 82, 50), 0.55)
+MATS = {"plaster": PLASTER, "stone": STONE, "glass": GLASS, "frame": FRAME,
+        "ground": GROUND, "water": WATER, "wood": WOOD}
 
 
 def block(x, y, z, sx, sy, sz, angle, material, name):
@@ -79,6 +83,26 @@ def wall_pieces(i, w, openings):
     piece(start, length + t / 2, 0, STOREY, PLASTER, "solid")
 
 
+def extras():
+    """Spec "massing": upper-floor blocks, pools, pergolas and mashrabiya/louvre fins.
+    {"box": [x0, y0, x1, y1], "z": [z0, z1], "mat": "plaster|stone|glass|frame|water|wood",
+     "kind": "fins", "spacing": 250}  -> fins run across the box's longer side."""
+    for i, m in enumerate(SPEC.get("massing", [])):
+        bx0, by0, bx1, by1 = m["box"]
+        z0, z1 = m.get("z", [0, STOREY])
+        material = MATS[m.get("mat", "plaster")]
+        if m.get("kind") == "fins":
+            step, along_x = m.get("spacing", 250), (bx1 - bx0) >= (by1 - by0)
+            span = (bx1 - bx0) if along_x else (by1 - by0)
+            for k in range(int(span // step) + 1):
+                if along_x:
+                    block(bx0 + k * step, (by0 + by1) / 2, z0, 60, by1 - by0, z1 - z0, 0, material, f"Fin{i}_{k}")
+                else:
+                    block((bx0 + bx1) / 2, by0 + k * step, z0, bx1 - bx0, 60, z1 - z0, 0, material, f"Fin{i}_{k}")
+        else:
+            block((bx0 + bx1) / 2, (by0 + by1) / 2, z0, bx1 - bx0, by1 - by0, z1 - z0, 0, material, f"Mass{i}")
+
+
 def build():
     rt.resetMaxFile(rt.name("noPrompt"))
     rt.units.SystemType = rt.name("millimeters")
@@ -90,10 +114,14 @@ def build():
     x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     ov = 900  # roof overhang for shade
-    block(cx, cy, STOREY, x1 - x0 + 2 * ov, y1 - y0 + 2 * ov, SLAB, 0, PLASTER, "Roof_Slab")
-    block(cx, cy, STOREY + SLAB, x1 - x0 + 2 * ov, y1 - y0 + 2 * ov, 120, 0, FRAME, "Roof_Fascia")
+    roofs = SPEC.get("roofs") or [[x0 - ov, y0 - ov, x1 + ov, y1 + ov]]   # leave courtyards open
+    for i, (rx0, ry0, rx1, ry1) in enumerate(roofs):
+        rcx, rcy = (rx0 + rx1) / 2, (ry0 + ry1) / 2
+        block(rcx, rcy, STOREY, rx1 - rx0, ry1 - ry0, SLAB, 0, PLASTER, f"Roof_Slab{i}")
+        block(rcx, rcy, STOREY + SLAB, rx1 - rx0, ry1 - ry0, 120, 0, PLASTER, f"Roof_Fascia{i}")
+    extras()
     block(cx, cy, -150, x1 - x0 + 600, y1 - y0 + 600, 150, 0, STONE, "Plinth")
-    g = rt.Plane(length=(y1 - y0) * 8, width=(x1 - x0) * 8, name="Ground")
+    g = rt.Plane(length=(y1 - y0) * 40, width=(x1 - x0) * 40, name="Ground")
     g.pos = rt.Point3(cx, cy, -155)
     g.material = GROUND
     return (x0, x1, y0, y1, cx, cy)
@@ -123,7 +151,7 @@ def light_and_camera(bounds):
     rt.useEnvironmentMap = True
     span = max(x1 - x0, y1 - y0)
     cam = rt.Physical_Camera(name="Hero_Cam")
-    cam.pos = rt.Point3(x0 - span * 0.55, y0 - span * 0.95, 1700)
+    cam.pos = rt.Point3(x0 - span * 0.55, y0 - span * 0.95, float(os.environ.get("BS_CAM_Z", 1700)))
     cam.target = rt.Targetobject(pos=rt.Point3(cx + span * 0.05, cy, STOREY * 0.45))
     for prop, val in (("focal_length_mm", 28.0), ("exposure_gain_type", 1), ("exposure_value", 15.0),
                       ("white_balance_type", 1), ("white_balance_kelvin", 6000.0),

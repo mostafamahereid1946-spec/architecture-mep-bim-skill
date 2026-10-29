@@ -30,13 +30,29 @@ This skill fixes that. Tested head-to-head (same task, with and without the skil
 
 ## Examples
 
+**Doha courtyard villa** — one JSON brief → AutoCAD sheet + 3ds Max render ([spec](examples/doha-courtyard-villa.json)):
+
+![Courtyard villa render](examples/doha-courtyard-villa.jpg)
+
+![Courtyard villa plan](examples/doha-courtyard-villa-plan.png)
+
+The sheet carries its own code check. On the first try it caught the designer's mistake — side setbacks of 2.875 m against Qatar's 3 m — and printed `FAIL` until the plot was fixed:
+
+```
+CODE CHECK (QA Decision 108/2026 Annex 7 (villa))
+SOUTH front setback 5875 >= 5000: PASS
+WEST side setback 3875 >= 3000: PASS
+EAST side setback 3875 >= 3000: PASS
+Coverage 34.6 % <= 60 %: PASS
+```
+
+Same plan, three countries:
+
 | Qatar (mm, bilingual) | Egypt (cm dims) | USA (feet-inches, ARCH D) |
 |---|---|---|
 | ![Qatar](examples/qa_villa.png) | ![Egypt](examples/eg_villa.png) | ![USA](examples/us_villa.png) |
 
-![3ds Max render](examples/qa_render.jpg)
-
-All produced by the skill's scripts and verified in AutoCAD 2026 / 3ds Max 2026.
+All produced by the skill's scripts and verified in AutoCAD 2026 (AUDIT: 0 errors) and 3ds Max 2026. Built together with Claude (Anthropic) — the skill was written, tested and debugged by Claude Code running it against the real apps.
 
 ## Install
 
