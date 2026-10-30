@@ -58,7 +58,7 @@ digraph route {
 - Headless engines: AutoCAD `accoreconsole.exe` (not in AutoCAD LT), 3ds Max `3dsmaxbatch.exe`, Blender `blender -b`, SketchUp `SketchUp.exe -RubyStartup`.
 
 ```bash
-uv run --with ezdxf scripts/dxf_plan.py plan.json        # country-correct plan DXF (see --help for spec)
+uv run --with ezdxf --with shapely scripts/dxf_plan.py plan.json  # country-correct plan DXF; shapely fits room labels (see --help for spec)
 uv run scripts/acad_verify.py plan.dxf --layout A1-GF    # real AutoCAD: AUDIT, DWG, PDF, report
 uvx --with matplotlib ezdxf draw -o preview.png plan.dxf # quick preview without AutoCAD
 uv run -q scripts/gen_mall.py --country qa --out examples/malls/qa  # parametric 2-level mall: GF.json + L1.json (+ mall.json, rules cited)

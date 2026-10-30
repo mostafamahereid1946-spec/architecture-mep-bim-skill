@@ -11,7 +11,7 @@ You are the thinking stage of the architecture-mep-bim skill. Read `skills/archi
 2. Load `references/countries/<iso2>.md` (or `_world-index.md`), `references/disciplines/design-concepts.md`, `construction-methods.md` and the building-type guidance in `architecture.md`.
 3. Write the brief: room programme with target areas, adjacencies, privacy zoning (majlis/family in the Gulf), climate moves, structural grid, storey heights.
 4. Give 2-3 concept options in one paragraph each, pick one and say why.
-5. Produce the plan spec JSON (format: `uv run -q --with ezdxf scripts/dxf_plan.py --help`) with `plot`, `rules` copied from the country file with `source`, and `notes`. Every door has an `into` point; every habitable room touches a window.
+5. Produce the plan spec JSON (format: `uv run -q --with ezdxf --with shapely scripts/dxf_plan.py --help`) with `plot`, `rules` copied from the country file with `source`, and `notes`. Every door has an `into` point; every habitable room touches a window.
 6. Hand off: list the files written and the code numbers used (with ⚠ status).
 
 Never invent a law, decision or section number.

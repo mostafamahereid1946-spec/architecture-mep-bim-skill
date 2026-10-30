@@ -9,7 +9,7 @@ build() {
   uv run -q $S/gen_mall.py --country "$cc" --out "$OUT/$cc" || return 1
   for f in $(ls $OUT/$cc | grep -E '^(GF|L[0-9])\.json$'); do
     lv=${f%.json}
-    uv run -q --with ezdxf $S/dxf_plan.py "$OUT/$cc/$lv.json" >/dev/null
+    uv run -q --with ezdxf --with shapely $S/dxf_plan.py "$OUT/$cc/$lv.json" >/dev/null
     uv run -q $S/mep_overlay.py "$OUT/$cc/$lv.json" >/dev/null
     uv run -q --with shapely --with networkx $S/plan_audit.py "$OUT/$cc/$lv.json" > "$OUT/$cc/$lv-audit.txt"
   done

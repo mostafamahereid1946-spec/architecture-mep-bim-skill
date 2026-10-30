@@ -1,7 +1,8 @@
 """Generate a country-correct architectural floor plan DXF from a JSON spec.
 
 Usage:
-    uv run --with ezdxf scripts/dxf_plan.py spec.json [-o out.dxf]
+    uv run --with ezdxf --with shapely scripts/dxf_plan.py spec.json [-o out.dxf]
+(shapely fits room labels to the room: shrink / stack / leader; without it labels sit at the room point.)
 
 Spec (lengths in mm, walls by centerline):
 {
@@ -161,16 +162,246 @@ def draw_openings(msp, prof, walls, openings, th):
                          ).set_placement(tag_pt, align=MC)
 
 
-def draw_rooms(msp, prof, rooms, th):
-    for r in rooms:
-        lines = [r["name"].upper()]
-        if prof.get("bilingual") and r.get("name_ar"):
-            lines.append(ar(prof, r["name_ar"]))
-        if r.get("area"):
-            lines.append(ar(prof, prof["area_fmt"].format(a=r["area"], ft2=r["area"] * 10.7639)))
-        mt = msp.add_mtext("\\P".join(lines), dxfattribs={
-            "layer": lay(prof, "room"), "style": prof["text"]["style"], "char_height": th * 1.2})
-        mt.set_location(tuple(r["pt"]), attachment_point=5)
+# ---------------------------------------------------------------- room labels
+# Each label is fitted to the room it names: full size -> shrunk to 60 % -> words stacked ->
+# outside the room with a leader line. No label box may touch a wall, another label or a leader.
+# Needs shapely (uv run --with ezdxf --with shapely ...); without it labels sit at the room point.
+try:
+    from shapely.geometry import LineString, Point, Polygon, box as sbox
+    from shapely.ops import polygonize, polylabel, unary_union
+    from shapely.prepared import prep
+except ImportError:   # pragma: no cover
+    LineString = None
+
+SHRINK = (1.0, 0.85, 0.72, 0.6)   # char-height factors tried (1.0 = label size, 1.2 x dimension text height)
+LINE_PITCH = 1.67                 # MTEXT single line spacing / char height
+STATS = {}                        # how each label was placed (printed by main)
+
+
+ARIAL_EM = {  # Arial advance widths in em; MTEXT char height is the CAP height (0.716 em)
+    **dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", (.667, .667, .722, .722, .667, .611, .778, .722, .278, .5, .667, .556, .833,
+                                               .722, .778, .667, .778, .722, .667, .611, .722, .667, .944, .667, .667, .611))),
+    **dict(zip("abcdefghijklmnopqrstuvwxyz", (.556, .556, .5, .556, .556, .278, .556, .556, .222, .222, .5, .222, .833,
+                                               .556, .556, .556, .556, .333, .5, .278, .556, .5, .722, .5, .5, .5))),
+    " ": .278, "&": .667, "/": .278, "-": .333, "(": .333, ")": .333, ".": .278, ",": .278, ":": .278, "+": .584, "%": .889, "²": .333,
+}
+
+
+def text_w(s, h):
+    """Estimated MTEXT line width (Arial metrics, +6 % safety)."""
+    em = 0.0
+    for ch in s:
+        if "؀" <= ch <= "ۿ":
+            em += 0.55
+        elif ch.isdigit():
+            em += 0.556
+        else:
+            em += ARIAL_EM.get(ch, 0.6)
+    return em * h / 0.716 * 1.06
+
+
+def block_size(lines, h):
+    return max(text_w(s, h) for s in lines), (len(lines) - 1) * LINE_PITCH * h + 1.3 * h
+
+
+def wrap_words(words, h, max_w):
+    """Greedy wrap of words (reading order) into lines no wider than max_w."""
+    out, cur = [], []
+    for wd in words:
+        if cur and text_w(" ".join(cur + [wd]), h) > max_w:
+            out.append(cur)
+            cur = []
+        cur.append(wd)
+    if cur:
+        out.append(cur)
+    return out
+
+
+def label_variants(prof, r, h0, max_w):
+    """(char_height, lines, how) in order of preference. Arabic lines get ar() word reversal per line,
+    so wrapped/stacked Arabic keeps reading order (words are wrapped first, reversed per line after)."""
+    name = r["name"].upper().split()
+    name_ar = r["name_ar"].split() if (prof.get("bilingual") and r.get("name_ar")) else []
+    area = ar(prof, prof["area_fmt"].format(a=r["area"], ft2=r["area"] * 10.7639)) if r.get("area") else None
+
+    def build(f, wrap):
+        h = h0 * f
+        lines = []
+        for words, is_ar in ((name, False), (name_ar, True)):
+            if not words:
+                continue
+            chunks = [words] if wrap == "none" else wrap_words(words, h, max_w) if wrap == "fit" else [[w] for w in words]
+            lines += [ar(prof, " ".join(c)) if is_ar else " ".join(c) for c in chunks]
+        if area:
+            lines += [area] if wrap == "none" else [" ".join(c) for c in (
+                wrap_words(area.split(), h, max_w) if wrap == "fit" else [[w] for w in area.split()])]
+        return h, lines
+
+    seen = set()
+    plan = [(1.0, "none", "full")] + [(f, "none", "shrunk") for f in SHRINK[1:]] \
+        + [(f, w, "stacked") for f in SHRINK for w in ("fit", "words")]
+    for f, wrap, how in plan:
+        h, lines = build(f, wrap)
+        if (f, tuple(lines)) not in seen:
+            seen.add((f, tuple(lines)))
+            yield h, lines, how
+
+
+def label_geometry(walls, openings, th):
+    """(faces, wall_body, soft): free polygon of each enclosed room (centreline polygonize minus
+    half-thickness bodies, as plan_audit.py), union of wall bodies, door swings + tags (soft obstacles)."""
+    lines, bodies, soft = [], [], []
+    for w in walls:
+        pt, _, length = wall_frame(w)
+        if length < 1:
+            continue
+        h = w["thk"] / 2
+        lines.append(LineString([pt(-h, 0), pt(length + h, 0)]))
+        bodies.append(Polygon([pt(-h, -h), pt(length + h, -h), pt(length + h, h), pt(-h, h)]))
+    body = unary_union(bodies)
+    faces = [f.difference(body) for f in polygonize(unary_union(lines))]
+    for o in openings:
+        if o["kind"] != "door":
+            continue
+        w = walls[o["wall"]]
+        pt, n, _ = wall_frame(w)
+        h = w["thk"] / 2
+        a, b = o["at"], o["at"] + o["width"]
+        if "into" in o:
+            base = pt(0, 0)
+            side = 1 if (o["into"][0] - base[0]) * n[0] + (o["into"][1] - base[1]) * n[1] > 0 else -1
+        else:
+            side = 1 if o.get("swing", "left") == "left" else -1
+        soft.append(Polygon([pt(a, side * h), pt(b, side * h), pt(b, side * (h + o["width"])), pt(a, side * (h + o["width"]))]))
+        if o.get("tag"):
+            tx, ty = pt((a + b) / 2, -side * (h + th * 1.4))
+            soft.append(sbox(tx - th * 1.6, ty - th * 0.8, tx + th * 1.6, ty + th * 0.8))
+    return faces, body, unary_union(soft) if soft else None
+
+
+def anchors_in(poly, around, h, cap=700):
+    """Candidate label centres inside poly: `around` first, then a grid nearest-first."""
+    x0, y0, x1, y1 = poly.bounds
+    nx = max(1, min(40, int((x1 - x0) / (h * 0.5))))
+    ny = max(1, min(40, int((y1 - y0) / (h * 0.5))))
+    grid = [(x0 + i * (x1 - x0) / nx, y0 + j * (y1 - y0) / ny) for i in range(nx + 1) for j in range(ny + 1)]
+    grid.sort(key=lambda p: (p[0] - around[0]) ** 2 + (p[1] - around[1]) ** 2)
+    return [tuple(around)] + grid[:cap]
+
+
+def draw_rooms(msp, prof, rooms, th, walls=None, openings=None):
+    layer, style, h0 = lay(prof, "room"), prof["text"]["style"], th * 1.2
+
+    def put(lines, h, c):
+        msp.add_mtext("\\P".join(lines), dxfattribs={"layer": layer, "style": style, "char_height": h}
+                      ).set_location((c[0], c[1]), attachment_point=5)
+
+    if LineString is None or not walls:   # no shapely: label at the room point, full size
+        for r in rooms:
+            lines = [r["name"].upper()]
+            if prof.get("bilingual") and r.get("name_ar"):
+                lines.append(ar(prof, r["name_ar"]))
+            if r.get("area"):
+                lines.append(ar(prof, prof["area_fmt"].format(a=r["area"], ft2=r["area"] * 10.7639)))
+            put(lines, h0, r["pt"])
+        return
+    faces, body, soft = label_geometry(walls, openings or [], th)
+    pad = h0 * 0.15
+    free_in = prep(unary_union(faces).buffer(-pad))
+    placed, leaders = [], []   # label boxes, leader lines already drawn
+
+    def face_of(pt):
+        p = Point(pt)
+        hit = [f for f in faces if f.intersects(p)] or [f for f in faces if f.distance(p) < th * 3]
+        if not hit:
+            return None
+        g = min(hit, key=lambda f: f.area)
+        if g.geom_type == "MultiPolygon":
+            g = min(g.geoms, key=lambda q: q.distance(p))
+        return g
+
+    def free(bx):
+        return not any(q.intersects(bx) for q in placed) and not any(ln.intersects(bx) for ln in leaders)
+
+    def inside(r, face, variants):
+        room_in = prep(face.buffer(-pad))
+        for avoid_soft in (True, False):   # door swings / tags are avoided when possible, never walls or labels
+            for h, lines, how in variants:
+                w, hh = block_size(lines, h)
+                if w > face.bounds[2] - face.bounds[0] and hh > face.bounds[3] - face.bounds[1]:
+                    continue
+                for c in anchors_in(face, r["pt"], h):
+                    bx = sbox(c[0] - w / 2, c[1] - hh / 2, c[0] + w / 2, c[1] + hh / 2)
+                    if room_in.contains(bx) and free(bx) and not (avoid_soft and soft is not None and soft.intersects(bx)):
+                        return h, lines, how, c, bx
+        return None
+
+    todo = [(r, face_of(r["pt"])) for r in rooms]
+    todo.sort(key=lambda t: t[1].area if t[1] is not None else 1e18)   # narrow rooms first
+    outside_jobs = []
+    for r, face in todo:
+        if face is None:
+            put([r["name"].upper()], h0, r["pt"])
+            continue
+        variants = list(label_variants(prof, r, h0, face.bounds[2] - face.bounds[0] - 2 * pad))
+        res = inside(r, face, variants)
+        if res is None:
+            outside_jobs.append((r, face, variants))
+            continue
+        h, lines, how, c, bx = res
+        STATS[how] = STATS.get(how, 0) + 1
+        placed.append(bx)
+        put(lines, h, c)
+    for r, face, variants in outside_jobs:
+        pole = polylabel(face, tolerance=th * 0.2)
+        h, lines, _ = next(v for v in variants if v[2] == "shrunk")
+        w, hh = block_size(lines, h)
+        # leader end: nearest point of the room to its pole that is not inside a door swing / tag
+        target = pole
+        if soft is not None and soft.intersects(Point(pole)):
+            room_in = face.buffer(-pad)
+            spots = [Point(x, y) for x, y in anchors_in(room_in, (pole.x, pole.y), h)[1:]]
+            spots = [q for q in spots if room_in.contains(q) and not soft.intersects(q.buffer(h * 0.3))]
+            if spots:
+                target = spots[0]
+        best = None
+        for rad in (12, 24, 48):   # search rings (in char heights) around the room
+            n = rad * 2
+            for i in range(-n, n + 1):
+                for j in range(-n, n + 1):
+                    if i * i + j * j > n * n:
+                        continue
+                    c = (target.x + i * h * 0.5, target.y + j * h * 0.5)
+                    bx = sbox(c[0] - w / 2, c[1] - hh / 2, c[0] + w / 2, c[1] + hh / 2)
+                    if not free_in.contains(bx) or bx.intersects(face) or not free(bx):
+                        continue
+                    edge = bx.exterior.interpolate(bx.exterior.project(target))
+                    ln = LineString([(edge.x, edge.y), (target.x, target.y)])
+                    if ln.length < 1e-6 or any(q.intersects(ln) for q in placed):
+                        continue
+                    cross = ln.intersection(body)
+                    n_wall = 0 if cross.is_empty else len(getattr(cross, "geoms", [cross]))
+                    n_room = sum(1 for f in faces if f is not face and f.intersection(ln).length > h)
+                    foreign = any(f is not face and f.area < 1000 * h * h and f.contains(bx.centroid) for f in faces)
+                    slant = 0 if (ln.coords[0][0] == ln.coords[1][0] or ln.coords[0][1] == ln.coords[1][1]) else 1
+                    score = (ln.length + 3 * h * n_wall + 0.5 * cross.length + 4 * h * n_room + 8 * h * foreign
+                             + 4 * h * slant + (soft is not None and soft.intersects(bx)) * 6 * h)
+                    if best is None or score < best[0]:
+                        best = (score, c, bx, ln)
+            if best:
+                break
+        if best is None:   # nowhere clear: smallest stacked label at the room point
+            STATS["forced"] = STATS.get("forced", 0) + 1
+            put(variants[-1][1], variants[-1][0], r["pt"])
+            continue
+        _, c, bx, ln = best
+        STATS["leader"] = STATS.get("leader", 0) + 1
+        placed.append(bx)
+        leaders.append(ln)
+        put(lines, h, c)
+        (ex, ey), (px, py) = ln.coords
+        msp.add_line((ex, ey), (px, py), dxfattribs={"layer": layer})
+        msp.add_circle((px, py), h * 0.2, dxfattribs={"layer": layer})
 
 
 def grid_label(i, kind):
@@ -397,7 +628,7 @@ def main():
     grids = spec.get("grids") or {"x": [extent[0][0], extent[1][0]], "y": [extent[0][1], extent[1][1]]}
     draw_walls(msp, prof, walls, openings)
     draw_openings(msp, prof, walls, openings, th)
-    draw_rooms(msp, prof, spec.get("rooms", []), th)
+    draw_rooms(msp, prof, spec.get("rooms", []), th, walls, openings)
     draw_grids(msp, prof, grids, extent, th)
     draw_dims(msp, prof, grids, extent)
     half = max(w["thk"] for w in walls) / 2
@@ -412,7 +643,7 @@ def main():
     draw_sheet(doc, prof, spec.get("project", {}), view, side)
     out = Path(args.out or Path(args.spec).with_suffix(".dxf"))
     doc.saveas(out)
-    print(f"wrote {out}")
+    print(f"wrote {out}" + (f"  labels: {STATS}" if STATS else ""))
 
 
 if __name__ == "__main__":
