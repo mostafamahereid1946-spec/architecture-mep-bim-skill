@@ -80,6 +80,10 @@ Any project folder gets the same page: `uv run -q skills/architecture-mep-bim/sc
 ```
 npx skills add mostafamahereid1946-spec/architecture-mep-bim-skill
 ```
+**OpenAI Codex** — same command with `-a codex` (installs into `.agents/skills/`); Codex also reads this repo's `AGENTS.md`:
+```
+npx skills add mostafamahereid1946-spec/architecture-mep-bim-skill -a codex
+```
 
 **claude.ai** — download `architecture-mep-bim.zip` from Releases → Settings → Capabilities → Skills → upload. Code execution must be on.
 
